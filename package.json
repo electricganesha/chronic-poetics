@@ -6,15 +6,20 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "preinstall": "npx npm-force-resolutions"
   },
   "dependencies": {
     "next": "12.1.0",
+    "npm-force-resolutions": "0.0.10",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
     "eslint": "8.9.0",
     "eslint-config-next": "12.1.0"
+  },
+  "resolutions": {
+    "eslint-plugin-react": "7.27.0"
   }
 }
