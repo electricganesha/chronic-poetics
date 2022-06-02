@@ -15,10 +15,12 @@
   a {
     border-bottom: 1px solid black;
     font-weight: 700;
+    transition: all 0.3s;
 
     &:hover {
       color: gray;
       border-bottom: 1px solid gray;
+      transition: all 0.3s;
     }
   }
 

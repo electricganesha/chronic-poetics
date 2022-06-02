@@ -35,4 +35,25 @@
         font-size: 18px;
         transition: all 300ms;
     }
+
+    &__item > a {
+        position: relative;
+    }
+
+    &__item > a:before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: black;
+        visibility: hidden;
+        transition: all 0.2s ease-in-out;
+    }
+
+    &__item > a:hover:before {
+        visibility: visible;
+        width: 100%;
+    }
 }
