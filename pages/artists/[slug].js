@@ -11,30 +11,11 @@ export default function ArtistPage({artist, pieces}) {
       <Head>
         <title>Chronic Poetics - Artist Page</title>
       </Head>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center"
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            width: "40%",
-            justifyContent: "center"
-          }}
-        >
+      <div className={styles.artist__container}>
+        <div className={styles.artist__leftColumn}>
           <ArtistHeader artist={artist} pieces={pieces} />
         </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "45%"
-          }}
-        >
+        <div className={styles.artist__rightColumn}>
           <QuestionsContainer>
             {artist.importance && 
                 <QuestionAnswerBlock

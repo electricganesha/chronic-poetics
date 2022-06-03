@@ -1,0 +1,64 @@
+.condition {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: 768px) {
+        justify-content: space-evenly;
+        min-height: 70vh;
+    }
+
+    h1 {
+        margin: 24px 0;
+        font-size: 48px;
+        line-height: 1em;
+
+        @media (min-width: 768px) {
+            margin: 0;
+            line-height: normal;
+            font-size: 64px;
+        }
+    }
+
+    &__description {
+        text-align: justify;
+        margin: 24px 0;
+
+        @media (min-width: 768px) {
+            margin-top: 0;
+            max-width: 60%;
+        }
+    }
+
+    &__source {
+        font-size: 12px;
+        text-align: right;
+        margin: 16px 0;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        margin: 24px 0;
+        padding-bottom: 48px;
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+            width: 60%;
+            margin: 0;
+            padding-bottom: 0;
+        }
+    }
+
+    &__artists {
+        text-align: center;
+
+        @media (min-width: 768px) {
+            text-align: right;
+        }
+    }
+}
