@@ -2,6 +2,8 @@ import React from 'react';
 import styles from '/styles/Home.module.scss';
 import Head from 'next/head';
 import Link from 'next/link';
+import Navbar from "/components/Navbar";
+import Footer from "/components/Footer";
 
 export default function Pieces({ pieces }) {
     return (
@@ -9,6 +11,7 @@ export default function Pieces({ pieces }) {
             <Head>
                 <title>Chronic Poetics - Pieces</title>
             </Head>
+            <Navbar/>
             <main className={styles.main}>
                 <h1>
                     Pieces
@@ -35,6 +38,7 @@ export default function Pieces({ pieces }) {
                     })}
                 </div>
             </main>
+            <Footer/>
         </div>
     )
 }

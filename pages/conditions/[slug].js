@@ -1,6 +1,8 @@
 import styles from "/styles/Home.module.scss";
 import Head from "next/head";
 import ConditionView from "../../components/ConditionView";
+import Navbar from "/components/Navbar";
+import Footer from "/components/Footer";
 
 export default function ConditionPage({condition}) {
   return (
@@ -8,7 +10,9 @@ export default function ConditionPage({condition}) {
       <Head>
         <title>Chronic Poetics - Condition Page</title>
       </Head>
+      <Navbar />
       <ConditionView condition={condition} />
+      <Footer />
     </div>
   );
 }

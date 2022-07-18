@@ -2,6 +2,8 @@ import React from "react";
 import styles from "/styles/Home.module.scss";
 import Head from "next/head";
 import Link from "next/link";
+import Navbar from "/components/Navbar";
+import Footer from "/components/Footer";
 
 export default function Conditions({conditions}) {
   return (
@@ -9,6 +11,7 @@ export default function Conditions({conditions}) {
       <Head>
         <title>Chronic Poetics - Conditions</title>
       </Head>
+      <Navbar />
       <main className={styles.main}>
         <h1>Conditions</h1>
         <div className={styles.info}>
@@ -31,6 +34,7 @@ export default function Conditions({conditions}) {
           </ul>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

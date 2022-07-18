@@ -1,14 +1,15 @@
-import '../styles/globals.css'
-import React from 'react'
-import Navbar from '/components/Navbar'
-import Footer from '/components/Footer'
+import "../styles/globals.css";
+import React from "react";
+import {AuthUserProvider} from "../context/AuthUserContext";
 
-function MyApp({ Component, pageProps }) {
-  return <React.Fragment>
-    <Navbar />
-    <Component {...pageProps} />
-    <Footer />
-  </React.Fragment>
+function MyApp({Component, pageProps}) {
+  return (
+    <AuthUserProvider>
+      <React.Fragment>
+        <Component {...pageProps} />
+      </React.Fragment>
+    </AuthUserProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;

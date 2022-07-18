@@ -4,6 +4,8 @@ import QuestionAnswerBlock from "../../components/QuestionAnswerBlock";
 import ArtistHeader from "../../components/ArtistHeader";
 import QuestionsContainer from "../../components/QuestionsContainer";
 import Link from "next/link";
+import Navbar from "/components/Navbar";
+import Footer from "/components/Footer";
 
 export default function ArtistPage({artist, pieces}) {
   return (
@@ -11,6 +13,7 @@ export default function ArtistPage({artist, pieces}) {
       <Head>
         <title>Chronic Poetics - Artist Page</title>
       </Head>
+      <Navbar />
       <div className={styles.artist__container}>
         <div className={styles.artist__leftColumn}>
           <ArtistHeader artist={artist} pieces={pieces} />
@@ -92,6 +95,7 @@ export default function ArtistPage({artist, pieces}) {
           </QuestionsContainer>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
