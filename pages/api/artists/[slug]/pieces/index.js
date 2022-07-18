@@ -1,27 +1,29 @@
-import db from '/utils/db';
+import db from "/utils/db";
 
 const getPiece = async (req, res) => {
-    try {
-        switch (req.method) {
-            case "GET": {
-                let query = db.collection("pieces").where("artistSlug", "==", req.query.slug)
+  try {
+    switch (req.method) {
+      case "GET": {
+        let query = db
+          .collection("pieces")
+          .where("artistSlug", "==", req.query.slug);
 
-                query.get().then((pieces) => {
-                    const piecesData = pieces.docs.map((piece) => piece.data());
-                    res.status(200).json(piecesData);
-                });
+        await query.get().then(async pieces => {
+          const piecesData = await pieces.docs.map(piece => piece.data());
+          res.status(200).json(piecesData);
+        });
 
-                break;
-            }
-            default: {
-                res.status(405).end();
-            }
-        }
-    } catch (error) {
-        console.log(error);
-        res.statusMessage = "Could not retrieve piece";
-        res.status(503).end();
+        break;
+      }
+      default: {
+        res.status(405).end();
+      }
     }
-}
+  } catch (error) {
+    console.log(error);
+    res.statusMessage = "Could not retrieve piece";
+    res.status(503).end();
+  }
+};
 
 export default getPiece;

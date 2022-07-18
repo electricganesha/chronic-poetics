@@ -1,0 +1,14 @@
+.canvas {
+    height: 50vh;
+    width: 100%;
+
+    @media (min-width: 760px) {
+        height: 90vh;
+    }
+}
+
+.conditionName {
+    position: fixed;
+    font-size: 36px !important;
+    top: 0;
+}

@@ -13,13 +13,17 @@
     "classcat": "^5.0.3",
     "firebase": "^9.6.9",
     "firebase-admin": "^10.0.2",
+    "framer-motion": "^6.3.16",
+    "glslify-loader": "^2.0.0",
     "next": "12.1.0",
     "npm-force-resolutions": "0.0.10",
     "qrcode": "^1.5.0",
+    "raw-loader": "^4.0.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-responsive-navbar": "^1.0.11",
-    "sass": "^1.49.9"
+    "sass": "^1.49.9",
+    "three": "^0.142.0"
   },
   "devDependencies": {
     "eslint": "8.9.0",

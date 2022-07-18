@@ -1,0 +1,42 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 90vh;
+
+    a {
+        text-decoration: none;
+        border-bottom: none;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    &__content {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    &__leftArrow {
+        cursor: pointer;
+        display: none;
+
+        @media (min-width: 760px) {
+            display: block;
+        }
+    }
+
+    &__rightArrow {
+        cursor: pointer;
+        display: none;
+
+        @media (min-width: 760px) {
+            display: block;
+        }
+    }
+}
