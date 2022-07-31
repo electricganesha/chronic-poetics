@@ -20,13 +20,21 @@ export default function Home() {
             alignItems: "center"
           }}
         >
-          <span style={{marginRight: "12px"}}>A project by</span>{" "}
-          <Image
-            src="/cl-logo.jpg"
-            alt="Colliding Lines Logo"
-            width="120"
-            height="120"
-          />
+          <div style={{display: "flex", alignItems: 'center', justifyContent: 'space-between', minWidth: '420px'}}>
+            <span style={{marginRight: "12px"}}>A project by</span>{" "}
+            <Image
+              src="/cl-logo.jpg"
+              alt="Colliding Lines Logo"
+              width="120"
+              height="120"
+            />
+            <Image
+              src="/pp-logo.png"
+              alt="Point Positive Logo"
+              width="120"
+              height="120"
+            />
+        </div>
         </h3>
       </main>
       <Footer />

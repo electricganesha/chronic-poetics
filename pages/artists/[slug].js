@@ -6,8 +6,9 @@ import QuestionsContainer from "../../components/QuestionsContainer";
 import Link from "next/link";
 import Navbar from "/components/Navbar";
 import Footer from "/components/Footer";
+import React from "react";
 
-export default function ArtistPage({artist, pieces}) {
+export default function ArtistPage({artist, pieces, conditions}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -16,7 +17,11 @@ export default function ArtistPage({artist, pieces}) {
       <Navbar />
       <div className={styles.artist__container}>
         <div className={styles.artist__leftColumn}>
-          <ArtistHeader artist={artist} pieces={pieces} />
+          <ArtistHeader
+            artist={artist}
+            pieces={pieces}
+            conditions={conditions}
+          />
         </div>
         <div className={styles.artist__rightColumn}>
           <QuestionsContainer>
@@ -77,12 +82,13 @@ export default function ArtistPage({artist, pieces}) {
             {artist.symptoms && 
                 <QuestionAnswerBlock
                 question="What symptoms do you experience"
-                answer={artist.symptoms?.length > 1 ? artist.symptoms?.map(s =>
-                    <p key={s.name}>
-                    <Link href={s.link}>
-                        {s.name}
-                    </Link>
-                    </p>
+                answer={artist.symptoms?.length >= 1 ? artist.symptoms?.map(s =>
+                    <React.Fragment  key={s.name}>
+                      <Link href={s.link}>
+                          {`${s.name}`}
+                      </Link>
+                      {"  "}
+                    </React.Fragment>
                 ) : artist.symptoms}
                 />
             }
@@ -116,8 +122,24 @@ ArtistPage.getInitialProps = async req => {
   const artist = await artistDataRequest.json();
   const pieces = await piecesDataRequest.json();
 
+  const mappedConditions =
+    artist &&
+    artist.conditions &&
+    artist.conditions.map(async condition => {
+      const fetchedCondition = await fetch(
+        `${process.env.NEXT_PUBLIC_HOST}/api/conditions/id/${condition}`
+      ).catch(() => {
+        console.error("Error fetching conditions from API");
+      });
+
+      return await fetchedCondition.json();
+    });
+
+  const conditions = await Promise.all(mappedConditions);
+
   return {
     artist,
-    pieces
+    pieces,
+    conditions
   };
 };

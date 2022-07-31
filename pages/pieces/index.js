@@ -4,8 +4,9 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Navbar from "/components/Navbar";
 import Footer from "/components/Footer";
+import {sortAlphabetically } from '../../utils/array';
 
-export default function Pieces({ pieces }) {
+export default function Pieces({ pieces, artists }) {
     return (
         <div className={styles.container}>
             <Head>
@@ -19,11 +20,11 @@ export default function Pieces({ pieces }) {
                 <div className={styles.info}>
                     {Object.keys(pieces).map(p => {
                         const reducedPieces = pieces[p];
-                        const { artist, artistSlug } = reducedPieces[0];
+                        const artist = artists.find(a => a.id === reducedPieces[0].artists[0]);
 
-                        return <div key={artistSlug} style={{ margin: '16px auto', borderBottom: '1px dotted black', maxWidth: '360px' }}>
-                            <Link href={`/artists/${artistSlug}`} >
-                                <a style={{ fontWeight: 400 }}>{artist}</a>
+                        return <div key={artist.slug} style={{ margin: '16px auto', borderBottom: '1px dotted black', maxWidth: '360px' }}>
+                            <Link href={`/artists/${artist.slug}`} >
+                                <a style={{ fontWeight: 400 }}>{artist.name}</a>
                             </Link>
                             <ul style={{ padding: 0 }}>
                                 {
@@ -49,12 +50,24 @@ Pieces.getInitialProps = async () => {
     });
 
     const pieces = await piecesDataRes.json();
+    const mappedArtists = pieces.map(async piece => {
+      const fetchedArtist = await fetch(
+        `${process.env.NEXT_PUBLIC_HOST}/api/artists/id/${piece.artists[0]}`
+      ).catch(() => {
+        console.error("Error fetching conditions from API");
+      });
 
+      return await fetchedArtist.json();
+    });
+
+    const artistsToReturn = await Promise.all(mappedArtists);
     return {
-        pieces: pieces.reduce((group, piece) => {
-            const { artistSlug } = piece;
-            group[artistSlug] = group[artistSlug] ?? [];
-            group[artistSlug].push(piece);
+        artists: artistsToReturn,
+        pieces: pieces.sort(sortAlphabetically).reduce((group, piece) => {
+            const { artists } = piece;
+
+            group[artists[0]] = group[artists[0]] ?? [];
+            group[artists[0]].push(piece);
             return group;
         }, {}),
     }

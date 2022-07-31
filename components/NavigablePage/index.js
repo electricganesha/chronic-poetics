@@ -34,8 +34,6 @@ const NavigablePage = ({slug, numPages, currentPage, children}) => {
   }
 
   const navigateLeft = e => {
-    console.log("currentPage ", currentPage);
-    console.log("numPages ", numPages);
     if (currentPage <= 1) {
       return;
     }
@@ -46,9 +44,6 @@ const NavigablePage = ({slug, numPages, currentPage, children}) => {
   };
 
   const navigateRight = e => {
-    console.log("currentPage ", currentPage);
-    console.log("numPages ", numPages);
-
     if (currentPage >= numPages) {
       return;
     }

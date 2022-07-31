@@ -4,7 +4,7 @@ import Image from "next/image";
 import QRCode from "qrcode";
 import Link from "next/link";
 
-const ArtistHeader = ({artist, pieces}) => {
+const ArtistHeader = ({artist, pieces, conditions}) => {
   const [qrCodeUrl, setqrCodeUrl] = useState(null);
 
   QRCode.toDataURL(`${process.env.NEXT_PUBLIC_HOST}/artists/${artist.slug}`)
@@ -15,17 +15,17 @@ const ArtistHeader = ({artist, pieces}) => {
       console.error(err);
     });
 
-  const conditions =
-    artist.conditions.length > 1
-      ? artist.conditions.map((condition, index) =>
+  const mappedConditions =
+    conditions.length > 1
+      ? conditions.map((condition, index) =>
           <React.Fragment key={index}>
             <Link href={`/conditions/${condition.slug}`}>
               {condition.name}
             </Link>{" "}
-            {index !== artist.conditions.length - 1 && " and "}
+            {index !== conditions.length - 1 && " and "}
           </React.Fragment>
         )
-      : artist.conditions.map((condition, index) =>
+      : conditions.map((condition, index) =>
           <Link key={index} href={`/conditions/${condition.slug}`}>
             {condition.name}
           </Link>
@@ -41,7 +41,7 @@ const ArtistHeader = ({artist, pieces}) => {
             : null}
         </h1>
         <span>
-          suffers from {conditions}
+          suffers from {mappedConditions}
         </span>
         <ul>
           {artist.name.split(" ")[0]}&apos;s work:
