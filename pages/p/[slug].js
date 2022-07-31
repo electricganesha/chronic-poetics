@@ -6,7 +6,6 @@ import Image from "next/image";
 import {useRouter} from "next/router";
 import NavigablePage from "../../components/NavigablePage";
 import WebGLExperience from "../../components/WebGLExperience";
-import { slugToName } from '../../utils/string';
 
 export default function QRCodePage({artist, pieces, conditions}) {
   const [qrCodeUrl, setqrCodeUrl] = useState(null);
@@ -64,38 +63,39 @@ export default function QRCodePage({artist, pieces, conditions}) {
       </NavigablePage> : null 
     }
 {router.query.p === "2" ?
-<NavigablePage  
-                key={pieces[0].name}
-                slug={pieces[0].artistSlug}
+ <NavigablePage  
+                key={pieces.name}
+                slug={'mark-tulin'}
                 route={router.route}
                 numPages={4}
                 currentPage={parseInt(router.query.p)}
               >
   <p>
-                     My work is called &quot;{pieces[0].name}&quot;
+                     My work is called &quot;{pieces.name}&quot;
                     </p>
-</NavigablePage> : null }
+</NavigablePage>
+ : null }
 {router.query.p === "3" ?
 <NavigablePage  
-                key={conditions[0].name}
-                slug={conditions[0].artists[0].slug}
+                key={conditions.name}
+                slug={'mark-tulin'}
                 route={router.route}
                 numPages={4}
                 currentPage={parseInt(router.query.p)}
               >
   <p>
-                     I suffer from {conditions[0].name}
+                     I suffer from {conditions.name}
                     </p>
 </NavigablePage> : null }
 {router.query.p === "4" ?
 <NavigablePage  
-                key={conditions[0].name}
-                slug={conditions[0].artists[0].slug}
+                key={conditions.name}
+                slug={artist.slug}
                 route={router.route}
                 numPages={4}
                 currentPage={parseInt(router.query.p)}
               >
-<WebGLExperience name={conditions[0].name}/> </NavigablePage>: null
+<WebGLExperience name={conditions.name}/> </NavigablePage>: null
 }
       </div>
     </div>
@@ -105,7 +105,6 @@ export default function QRCodePage({artist, pieces, conditions}) {
 QRCodePage.getInitialProps = async req => {
   const query = req.query.p;
 
-  if(query === "1") {
     const artistDataRequest = await fetch(
       `${process.env.NEXT_PUBLIC_HOST}/api/artists/${req.query.slug}`
     ).catch(() => {
@@ -113,32 +112,31 @@ QRCodePage.getInitialProps = async req => {
     });
 
     const artist = await artistDataRequest.json();
-    
-    return { artist };
-  }
+
+  if(query === "1") {
+    return {artist};    
+}
 
   if(query === "2") {
     const piecesDataRequest = await fetch(
-      `${process.env.NEXT_PUBLIC_HOST}/api/artists/${req.query.slug}/pieces`
+      `${process.env.NEXT_PUBLIC_HOST}/api/pieces/id/${artist.pieces[0]}`
     ).catch(() => {
       console.error("Error fetching pieces from API");
     });
     const pieces = await piecesDataRequest.json();
 
-    return {pieces};
+    return {artist, pieces};
   }
 
   if(query === "3" || query === "4") {
-    const artistName = slugToName(req.query.slug);
     const conditionsDataRequest = await fetch(
-      `${process.env.NEXT_PUBLIC_HOST}/api/artists/${req.query
-        .slug}/${artistName}/conditions`
+      `${process.env.NEXT_PUBLIC_HOST}/api/conditions/id/${artist.conditions[0]}`
     ).catch(() => {
       console.error("Error fetching conditions from API");
     });
 
     const conditions = await conditionsDataRequest.json();
 
-    return {conditions};
+    return {artist, conditions};
   }
 };

@@ -9,8 +9,6 @@ import Footer from "/components/Footer";
 
 export default function PiecePage({piece, artist}) {
   const [qrCodeUrl, setqrCodeUrl] = useState(null);
-  console.log("piece ", piece);
-  console.log("artist ", artist);
   QRCode.toDataURL(`${process.env.NEXT_PUBLIC_HOST}/pieces/${piece.slug}`)
     .then(url => {
       setqrCodeUrl(url);

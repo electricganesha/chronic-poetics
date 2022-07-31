@@ -8,7 +8,7 @@ const getConditions = async (req, res) => {
           let query = db
             .collection("conditions")
             .where("artists", "array-contains", {
-              slug: req.query.slug,
+              id: req.query.id,
               name: req.query.name
             });
 
