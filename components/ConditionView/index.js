@@ -3,7 +3,7 @@ import styles from "./ConditionView.module.scss";
 
 import Link from "next/link";
 
-const ConditionView = ({condition}) => {
+const ConditionView = ({condition, artists}) => {
   return (
     <div className={styles.condition}>
       <h1>
@@ -37,7 +37,7 @@ const ConditionView = ({condition}) => {
             <p>
               Artists suffering from {condition.name}:
             </p>
-            {condition.artists.map(artist =>
+            {artists.map(artist =>
               <Link key={artist.slug} href={`/artists/${artist.slug}`}>
                 {artist.name}
               </Link>

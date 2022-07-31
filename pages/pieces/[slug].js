@@ -7,9 +7,10 @@ import Link from "next/link";
 import Navbar from "/components/Navbar";
 import Footer from "/components/Footer";
 
-export default function PiecePage({piece}) {
+export default function PiecePage({piece, artist}) {
   const [qrCodeUrl, setqrCodeUrl] = useState(null);
-
+  console.log("piece ", piece);
+  console.log("artist ", artist);
   QRCode.toDataURL(`${process.env.NEXT_PUBLIC_HOST}/pieces/${piece.slug}`)
     .then(url => {
       setqrCodeUrl(url);
@@ -39,8 +40,7 @@ export default function PiecePage({piece}) {
           {piece.name}
         </h1>
         <h3>
-          A piece by{" "}
-          <Link href={`/artists/${piece.artistSlug}`}>{piece.artist}</Link>
+          A piece by <Link href={`/artists/${artist.slug}`}>{artist.name}</Link>
         </h3>
       </div>
       <Footer />
@@ -57,7 +57,16 @@ PiecePage.getInitialProps = async req => {
 
   const piece = await pieceDataRequest.json();
 
+  const artistRequest = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}/api/artists/id/${piece.artists[0]}`
+  ).catch(() => {
+    console.error("Error fetching conditions from API");
+  });
+
+  const artist = await artistRequest.json();
+
   return {
-    piece
+    piece,
+    artist
   };
 };
