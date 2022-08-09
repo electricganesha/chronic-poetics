@@ -1,0 +1,7 @@
+.surveyView {
+    > div {
+        overflow-y: auto !important;
+        height: auto !important;
+        max-height: fit-content !important;
+    }
+}

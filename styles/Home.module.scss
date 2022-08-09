@@ -2,14 +2,17 @@
   padding: 0 2rem;
 
   h1 {
-    font-family: "Spectral", serif;
+    margin-top: 0;
+    font-family: "fig-script", sans-serif;
     font-size: 64px;
     text-align: center;
+    font-weight: 800;
   }
 
   p {
-    font-family: "Karla", sans-serif;
+    font-family: "Overpass", sans-serif;
     font-size: 18px;
+    font-weight: 300;
   }
 
   a {
@@ -18,8 +21,8 @@
     transition: all 0.3s;
 
     &:hover {
-      color: gray;
-      border-bottom: 1px solid gray;
+      color: lightgrey;
+      border-bottom: 1px solid lightgrey;
       transition: all 0.3s;
     }
   }
@@ -36,7 +39,7 @@
 }
 
 .main {
-  min-height: 86vh;
+  min-height: 80vh;
   padding: 0;
   flex: 1;
   display: flex;

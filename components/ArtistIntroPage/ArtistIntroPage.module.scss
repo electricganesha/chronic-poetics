@@ -1,0 +1,10 @@
+.artistIntro {
+    &__bio {
+        text-align: justify;
+        margin: 48px 0;
+        max-width: 960px;
+    }
+    img {
+        object-fit: cover;
+    }
+}

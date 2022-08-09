@@ -6,8 +6,8 @@ const getPieces = async (req, res) => {
       case "GET": {
         let query = db.collection("pieces");
 
-        query.get().then(pieces => {
-          const piecesData = pieces.docs.map(piece => piece.data());
+        query.get().then((pieces) => {
+          const piecesData = pieces.docs.map((piece) => piece.data());
           res.status(200).json(piecesData);
         });
 

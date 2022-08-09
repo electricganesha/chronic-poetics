@@ -3,7 +3,12 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 90vh;
+    min-height: 90vh;
+
+    button {
+        background: none;
+        border: none;
+    }
 
     a {
         text-decoration: none;
@@ -25,6 +30,9 @@
     &__leftArrow {
         cursor: pointer;
         display: none;
+        position: fixed;
+        top: 50vh;
+        left: 0;
 
         @media (min-width: 760px) {
             display: block;
@@ -34,6 +42,9 @@
     &__rightArrow {
         cursor: pointer;
         display: none;
+        position: fixed;
+        top: 50vh;
+        right: 0;
 
         @media (min-width: 760px) {
             display: block;

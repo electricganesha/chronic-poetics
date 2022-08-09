@@ -1,33 +1,33 @@
-import React, {useRef, useEffect} from "react";
+import React, { useRef, useEffect } from "react";
 import styles from "./WebGLExperience.module.scss";
 import * as THREE from "three";
-import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader.js";
-import {EffectComposer} from "three/examples/jsm/postprocessing/EffectComposer.js";
-import {RenderPass} from "three/examples/jsm/postprocessing/RenderPass.js";
-import {DotScreenPass} from "three/examples/jsm/postprocessing/DotScreenPass.js";
-import {ShaderPass} from "three/examples/jsm/postprocessing/ShaderPass.js";
-import {RGBShiftShader} from "three/examples/jsm/shaders/RGBShiftShader.js";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
+import { DotScreenPass } from "three/examples/jsm/postprocessing/DotScreenPass.js";
+import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
+import { RGBShiftShader } from "three/examples/jsm/shaders/RGBShiftShader.js";
 import lungVertexShader from "../../shaders/lungs/vertex.glsl";
 import lungFragmentShader from "../../shaders/lungs/fragment.glsl";
 
-const WebGLExperience = ({name}) => {
+const WebGLExperience = ({ name }) => {
   const canvas = useRef();
 
   useEffect(() => {
     const loader = new GLTFLoader();
     let lung = null;
-    loader.load("/models/lungs/lungv1.glb", loaded => {
+    loader.load("/models/lungs/lungv1.glb", (loaded) => {
       lung = loaded.scene.children[0];
       lung.material = new THREE.ShaderMaterial({
         uniforms: {
-          uTime: {value: null},
-          tDiffuse: {value: null},
-          uColor: {value: new THREE.Color(0x0000)}
+          uTime: { value: null },
+          tDiffuse: { value: null },
+          uColor: { value: new THREE.Color(0x0000) },
         },
         transparent: true,
         vertexShader: lungVertexShader,
         fragmentShader: lungFragmentShader,
-        depthWrite: false
+        depthWrite: false,
       });
       lung.rotation.z = Math.PI / 2;
       scene.add(lung);
@@ -47,7 +47,7 @@ const WebGLExperience = ({name}) => {
     camera.position.z = 4;
 
     const renderTarget = new THREE.WebGLRenderTarget(800, 600, {
-      samples: renderer.getPixelRatio() === 1 ? 2 : 0
+      samples: renderer.getPixelRatio() === 1 ? 2 : 0,
     });
 
     const effectComposer = new EffectComposer(renderer, renderTarget);
@@ -86,9 +86,7 @@ const WebGLExperience = ({name}) => {
   return (
     <React.Fragment>
       <div className={styles.canvas} ref={canvas} />
-      <p className={styles.conditionName}>
-        {name}
-      </p>
+      <p className={styles.conditionName}>{name}</p>
     </React.Fragment>
   );
 };

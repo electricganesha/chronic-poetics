@@ -1,0 +1,37 @@
+.member {
+    max-width: 280px;
+
+    img {
+        object-fit: cover;
+    }
+
+    a {
+        text-decoration: none;
+        border-bottom: none;
+        margin: 0 4px;
+
+        &:hover {
+            border-bottom: none;
+        }
+    }
+
+    &__name {
+        margin: 12px 0;
+        font-weight: 800;
+    }
+
+    &__role {
+        font-size: 14px;
+        text-decoration: underline;
+        margin: 12px 0;
+        font-weight: 800;
+    }
+
+    &__bio {
+        max-width: 240px;
+        text-align: center;
+        margin: 12px 0;
+        font-size: 14px;
+        font-weight: 300;
+    }
+}

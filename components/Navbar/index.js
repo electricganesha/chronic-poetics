@@ -1,8 +1,8 @@
-import styles from "./Navbar.module.scss";
 import ResponsiveMenu from "react-responsive-navbar";
 import Link from "next/link";
+import styles from "./Navbar.module.scss";
 
-const Navbar = () => {
+function Navbar() {
   return (
     <div className={styles.wrapper}>
       <ResponsiveMenu
@@ -38,7 +38,10 @@ const Navbar = () => {
               <Link href="/conditions">Conditions</Link>
             </li>
             <li className={styles.navbar__item}>
-              <Link href="/pieces">Pieces</Link>
+              <Link href="/book">Book</Link>
+            </li>
+            <li className={styles.navbar__item}>
+              <Link href="/findings">Findings</Link>
             </li>
             <li className={styles.navbar__item}>
               <Link href="/about">About</Link>
@@ -48,6 +51,6 @@ const Navbar = () => {
       />
     </div>
   );
-};
+}
 
 export default Navbar;

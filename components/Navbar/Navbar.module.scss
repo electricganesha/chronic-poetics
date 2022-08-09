@@ -31,23 +31,30 @@
     }
 
     &__item {
-        font-family: "Karla", sans-serif;
+        font-family: "Overpass", sans-serif;
+        font-weight: 300;
         font-size: 18px;
         transition: all 300ms;
     }
 
     &__item > a {
         position: relative;
+        border-bottom: none;
+
+        &:hover {
+            border-bottom: none;
+        }
     }
 
     &__item > a:before {
         content: "";
         position: absolute;
         width: 0;
-        height: 2px;
+        height: 1px;
         bottom: 0;
         left: 0;
-        background-color: black;
+        color: lightgrey;
+        background-color: lightgrey;
         visibility: hidden;
         transition: all 0.2s ease-in-out;
     }

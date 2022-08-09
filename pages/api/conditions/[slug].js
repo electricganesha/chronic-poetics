@@ -9,8 +9,8 @@ const getConditions = async (req, res) => {
             .collection("conditions")
             .where("slug", "==", req.query.slug);
 
-          await query.get().then(async conditions => {
-            const conditionsData = await conditions.docs.map(condition =>
+          await query.get().then(async (conditions) => {
+            const conditionsData = await conditions.docs.map((condition) =>
               condition.data()
             );
             res.status(200).json(conditionsData[0]);

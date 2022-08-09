@@ -7,8 +7,8 @@ const getConditions = async (req, res) => {
         let query = db.collection("conditions");
         query = query.orderBy("name", "asc");
 
-        query.get().then(conditions => {
-          const conditionsData = conditions.docs.map(condition =>
+        query.get().then((conditions) => {
+          const conditionsData = conditions.docs.map((condition) =>
             condition.data()
           );
           res.status(200).json(conditionsData);

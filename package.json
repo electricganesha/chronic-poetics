@@ -17,6 +17,7 @@
     "glslify-loader": "^2.0.0",
     "next": "12.1.0",
     "npm-force-resolutions": "0.0.10",
+    "prettier": "^2.7.1",
     "promise": "^8.1.0",
     "qrcode": "^1.5.0",
     "ra-input-rich-text": "^4.2.4",
@@ -30,9 +31,15 @@
     "three": "^0.142.0"
   },
   "devDependencies": {
-    "eslint": "8.9.0",
+    "eslint": "^8.21.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-next": "12.1.0",
-    "eslint-config-prettier": "^8.5.0"
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0"
   },
   "resolutions": {
     "eslint-plugin-react": "7.27.0"

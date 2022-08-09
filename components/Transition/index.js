@@ -1,30 +1,30 @@
-import {motion, AnimatePresence} from "framer-motion";
-import {useRouter} from "next/router";
+import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/router";
 import styles from "./Transition.module.scss";
 
-const Transition = ({children, xValue}) => {
-  const {asPath} = useRouter();
+const Transition = ({ children, xValue }) => {
+  const { asPath } = useRouter();
 
   const slideRight = {
     name: "Slide Right",
     variants: {
       initial: {
         opacity: 0,
-        x: -xValue
+        x: -xValue,
       },
       animate: {
         opacity: 1,
-        x: 0
+        x: 0,
       },
       exit: {
         opacity: 0,
-        x: xValue
-      }
+        x: xValue,
+      },
     },
     transition: {
       duration: 0.3,
-      type: "tween"
-    }
+      type: "tween",
+    },
   };
 
   return (

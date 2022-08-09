@@ -1,53 +1,53 @@
 import React from "react";
+import Link from "next/link";
 import styles from "./ConditionView.module.scss";
 
-import Link from "next/link";
-
-const ConditionView = ({condition, artists}) => {
+function ConditionView({ condition, pieces }) {
   return (
     <div className={styles.condition}>
-      <h1>
-        {condition.name}
-      </h1>
+      <h1>{condition.name}</h1>
       <p className={styles.condition__description}>
         {condition.description}
-        {condition.source &&
+        {condition.source && (
           <blockquote
             cite={condition.source.link}
             className={styles.condition__source}
           >
             Source:{" "}
             <Link href={condition.source.link}>{condition.source.name}</Link>
-          </blockquote>}
+          </blockquote>
+        )}
       </p>
       <div className={styles.condition__info}>
-        {condition.symptoms &&
+        {condition.symptoms && (
           <div>
             <p>Symptoms:</p>
-            {condition.symptoms.map((symptom, index) =>
-              <p key={index}>
-                <Link href={symptom.link}>
-                  {symptom.name}
-                </Link>
+            {condition.symptoms.map((symptom) => (
+              <p key={symptom.name}>
+                <Link href={symptom.link}>{symptom.name}</Link>
               </p>
-            )}
-          </div>}
-        {condition.artists &&
-          <div className={styles.condition__artists}>
-            <p>
-              Artists suffering from {condition.name}:
-            </p>
-            {artists.map(artist =>
-              <Link key={artist.slug} href={`/artists/${artist.slug}`}>
-                {artist.name}
+            ))}
+          </div>
+        )}
+        {condition.pieces && (
+          <div className={styles.condition__pieces}>
+            <p>Pieces relating to {condition.name}:</p>
+            {pieces.map((piece) => (
+              <Link
+                key={piece.name}
+                href={`/artists/${piece.artistSlug}/pieces`}
+              >
+                {piece.name}
               </Link>
-            )}
-          </div>}
+            ))}
+          </div>
+        )}
       </div>
-      {condition.wiki &&
-        <Link href={condition.wiki}>More information on Wikipedia</Link>}
+      {condition.wiki && (
+        <Link href={condition.wiki}>More information on Wikipedia</Link>
+      )}
     </div>
   );
-};
+}
 
 export default ConditionView;

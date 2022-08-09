@@ -1,13 +1,59 @@
-import db from "/utils/db";
+import db from "../../../../utils/db";
+import { mapNavigationForArtist } from "../../../../utils/pages";
 
-const getArtist = async (req, res) => {
+const getArtists = async (req, res) => {
   try {
     switch (req.method) {
       case "GET": {
-        let query = db.collection("artists").doc(req.query.id);
+        try {
+          const query = db
+            .collection("artists")
+            .where("id", "==", req.query.id);
+          await query.get().then(async (artists) => {
+            const artistsData = await artists.docs.map((artist) =>
+              artist.data()
+            );
 
-        query.get().then(artist => res.status(200).json(artist.data()));
+            // pieces
+            const queryPieces = db
+              .collection("pieces")
+              .where("artists", "array-contains", artistsData[0].id);
+            const piecesData = await queryPieces
+              .get()
+              .then(async (pieces) => pieces.docs.map((piece) => piece.data()));
 
+            // conditions
+            const queryConditions = db
+              .collection("conditions")
+              .where("artists", "array-contains", artistsData[0].id);
+            const conditionsData = await queryConditions
+              .get()
+              .then(async (conditions) =>
+                conditions.docs.map((condition) => condition.data())
+              );
+
+            const navigation = mapNavigationForArtist(
+              artistsData[0],
+              piecesData,
+              conditionsData
+            );
+
+            res.status(200).json({
+              ...artistsData[0],
+              pieces: {
+                ...artistsData[0].pieces,
+                data: piecesData,
+              },
+              conditions: {
+                ...artistsData[0].conditions,
+                data: conditionsData,
+              },
+              navigation,
+            });
+          });
+        } catch (error) {
+          res.status(500).end();
+        }
         break;
       }
       default: {
@@ -15,10 +61,9 @@ const getArtist = async (req, res) => {
       }
     }
   } catch (error) {
-    console.log(error);
-    res.statusMessage = "Could not retrieve artist by id";
+    res.statusMessage = `Could not retrieve artist : ${error}`;
     res.status(503).end();
   }
 };
 
-export default getArtist;
+export default getArtists;

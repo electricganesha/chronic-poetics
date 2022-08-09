@@ -1,0 +1,14 @@
+.itemslist {
+    width: 75%;
+    margin: auto;
+    text-align: left;
+
+    ul {
+        list-style: circle;
+    }
+
+    li {
+        font-weight: 800;
+        margin: 12px 0;
+    }
+}

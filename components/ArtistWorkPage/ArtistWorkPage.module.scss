@@ -1,0 +1,25 @@
+.artistWork {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 960px;
+    justify-content: center;
+    align-items: center;
+
+    &__title {
+        margin: 64px;
+        width: 100%;
+    }
+
+    &__gallery {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 48px;
+
+        img {
+            object-fit: contain !important;
+        }
+    }
+}

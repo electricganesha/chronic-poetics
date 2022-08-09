@@ -7,8 +7,8 @@ const getArtists = async (req, res) => {
         let query = db.collection("artists");
         query = query.orderBy("name", "asc");
 
-        await query.get().then(async artists => {
-          const artistsData = await artists.docs.map(artist => artist.data());
+        await query.get().then(async (artists) => {
+          const artistsData = await artists.docs.map((artist) => artist.data());
           res.status(200).json(artistsData);
         });
 

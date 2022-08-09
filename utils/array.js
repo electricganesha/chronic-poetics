@@ -1,4 +1,4 @@
-export const sortAlphabetically = (arrayItemA, arrayItemB) => {
+const sortAlphabetically = (arrayItemA, arrayItemB) => {
   if (arrayItemA.name < arrayItemB.name) {
     return -1;
   }
@@ -8,4 +8,8 @@ export const sortAlphabetically = (arrayItemA, arrayItemB) => {
   }
 
   return 0;
+};
+
+module.export = {
+  sortAlphabetically,
 };
