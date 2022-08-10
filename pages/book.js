@@ -13,8 +13,11 @@ export default function Book() {
       <Navbar />
       <main className={styles.main}>
         <h1>Book</h1>
+
         <div className={styles.info}>
-          <BuyButton />
+          <div>
+            <BuyButton />
+          </div>
           <p>TBD</p>
         </div>
       </main>

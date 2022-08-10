@@ -1,36 +1,51 @@
-import Script from "next/script";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "./BuyButton.module.scss";
+import Spinner from "../Spinner";
 
 function BuyButton() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasLoadedButton, setHasLoadedButton] = useState(false);
+
   useEffect(() => {
     try {
-      if (window.ShopifyBuy) {
+      const events = {
+        afterInit: function (component) {
+          setHasLoadedButton(true);
+        },
+        afterRender: function (component) {
+          setIsLoading(false);
+        },
+      };
+
+      if (window.ShopifyBuy && !hasLoadedButton) {
         const client = window.ShopifyBuy.buildClient({
-          domain: "my-shop.myshopify.com",
-          storefrontAccessToken: "your-storefront-access-token", // previously apiKey, now deprecated
+          domain: process.env.NEXT_PUBLIC_SHOPIFY_DOMAIN,
+          storefrontAccessToken:
+            process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN,
         });
 
         const ui = window.ShopifyBuy.UI.init(client);
 
         ui.createComponent("product", {
-          id: 1234567,
-          node: document.getElementById("product-component-1659885178594"),
+          id: 7205100257476,
+          node: document.getElementById("product-component-book"),
+          options: {
+            product: {
+              events: events,
+            },
+          },
         });
       }
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }, [hasLoadedButton]);
+
+  const showSpinner = !hasLoadedButton || isLoading;
   return (
     <div className={styles.button}>
-      <Script
-        id="script/shopify-buy-button"
-        key="script/shopify-buy-button"
-        src="http://sdks.shopifycdn.com/buy-button/1.0.0/buybutton.js"
-        // dangerouslySetInnerHTML={{ __html: script }}
-      />
-      <div id="product-component-1659885178594" />
+      {showSpinner ? <Spinner /> : null}
+      <div id="product-component-book" className={styles.button__shopify} />
     </div>
   );
 }
