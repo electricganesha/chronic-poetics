@@ -50,11 +50,18 @@ ArtistConditionsPage.getInitialProps = async (req) => {
 
   const pieces = await Promise.all(mappedPieces);
 
+  const artistsDataRequest = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}/api/artists/`
+  ).catch(() => {
+    console.error("Error fetching artist from API");
+  });
+
+  const artists = await artistsDataRequest.json();
+
   return {
     artist,
-    pieces: populatePiecesArrayWithArtistSlug(
-      pieces.map((piece) => piece[0]),
-      [artist]
-    ),
+    pieces: pieces.map((piece) =>
+      populatePiecesArrayWithArtistSlug(piece, artists)
+    )[0],
   };
 };

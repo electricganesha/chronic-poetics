@@ -1,8 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import styles from "./ConditionView.module.scss";
+import { removeDuplicates } from "../../utils/array";
 
 function ConditionView({ condition, pieces }) {
+  const cleanPieces = removeDuplicates(pieces, "name");
+
   return (
     <div className={styles.condition}>
       <h1>{condition.name}</h1>
@@ -32,7 +35,7 @@ function ConditionView({ condition, pieces }) {
         {condition.pieces && (
           <div className={styles.condition__pieces}>
             <p>Pieces relating to {condition.name}:</p>
-            {pieces.map((piece) => (
+            {cleanPieces.map((piece) => (
               <Link
                 key={piece.name}
                 href={`/artists/${piece.artistSlug}/pieces`}

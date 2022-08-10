@@ -37,7 +37,6 @@ export default function Artists({ artists }) {
 }
 
 Artists.getInitialProps = async () => {
-  console.log(`${process.env.NEXT_PUBLIC_HOST}/api/artists`);
   const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/artists`).catch(
     (err) => {
       console.error("Error fetching artists from API ", err);

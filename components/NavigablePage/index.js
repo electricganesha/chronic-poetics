@@ -10,7 +10,6 @@ function NavigablePage({ artist, children }) {
   const router = useRouter();
   const numPages = artist.navigation.length;
   const currentPage = artist.navigation.indexOf(router.asPath) + 1;
-  console.log(artist.navigation);
 
   const [xValue, setXValue] = useState(ANIMATION_X_TRANSFORM);
   const [touchStart, setTouchStart] = useState(0);

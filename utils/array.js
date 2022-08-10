@@ -1,4 +1,4 @@
-const sortAlphabetically = (arrayItemA, arrayItemB) => {
+export const sortAlphabetically = (arrayItemA, arrayItemB) => {
   if (arrayItemA.name < arrayItemB.name) {
     return -1;
   }
@@ -10,6 +10,7 @@ const sortAlphabetically = (arrayItemA, arrayItemB) => {
   return 0;
 };
 
-module.export = {
-  sortAlphabetically,
+export const removeDuplicates = (array, key) => {
+  const check = new Set();
+  return array.filter((obj) => !check.has(obj[key]) && check.add(obj[key]));
 };

@@ -3,11 +3,13 @@ export const populatePiecesArrayWithArtistSlug = (pieces, artists) =>
     if (!piece) {
       return;
     }
-    console.log("piece ", piece);
-    const artist = artists.find((artist) => artist.id === piece.artists[0]);
+
+    const matchingArtist = artists.find(
+      (artist) => artist.id === piece.artists[0]
+    );
 
     return {
       ...piece,
-      artistSlug: artist.slug,
+      artistSlug: matchingArtist.slug,
     };
   });
