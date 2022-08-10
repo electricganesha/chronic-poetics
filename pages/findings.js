@@ -49,7 +49,7 @@ export default function Findings() {
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="/pdf/chronic-poetics-accessibility-survey-report.pdf"
+                href="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1660146727/chronic-poetics/pdf/chronic-poetics-accessibility-survey-report.pdf"
               >
                 here
               </a>

@@ -1,7 +1,14 @@
 .footer {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-end;
     padding: 24px 0;
     font-size: 12px;
+    gap: 48px;
+
+    &__links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

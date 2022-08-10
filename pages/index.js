@@ -30,16 +30,16 @@ export default function Home() {
           >
             <span style={{ marginRight: "12px" }}>A project by</span>{" "}
             <Image
-              src="/logos/cl-logo.jpg"
+              src="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1660145425/chronic-poetics/logos/cl-logo.jpg"
               alt="Colliding Lines Logo"
               width="120"
               height="120"
             />
             <Image
-              src="/logos/ppp-logo.png"
+              src="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1660146347/chronic-poetics/logos/ppp-logo.png"
               alt="Point Positive Logo"
-              width="120"
-              height="160"
+              width="150"
+              height="150"
             />
           </div>
         </h3>

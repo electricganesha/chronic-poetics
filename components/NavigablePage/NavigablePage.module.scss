@@ -33,6 +33,17 @@
         position: fixed;
         top: 50vh;
         left: 0;
+        transition: transform 300ms ease-in;
+
+        svg {
+            width: 36px;
+            height: 36px;
+            margin-left: 24px;
+        }
+
+        &:hover {
+            transform: translateX(-10px);
+        }
 
         @media (min-width: 760px) {
             display: block;
@@ -45,6 +56,17 @@
         position: fixed;
         top: 50vh;
         right: 0;
+        transition: transform 300ms ease-in;
+
+        svg {
+            width: 36px;
+            height: 36px;
+            margin-right: 24px;
+        }
+
+        &:hover {
+            transform: translateX(12px);
+        }
 
         @media (min-width: 760px) {
             display: block;

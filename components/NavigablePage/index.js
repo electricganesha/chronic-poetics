@@ -69,12 +69,20 @@ function NavigablePage({ artist, children }) {
         onClick={(event) => navigateLeft(event)}
       >
         {currentPage > 1 ? (
-          <Image
-            src="/left-chevron.png"
-            alt="Arrow Left"
-            width="32"
-            height="32"
-          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M11 19l-7-7 7-7m8 14l-7-7 7-7"
+            />
+          </svg>
         ) : null}
       </button>
       <Transition xValue={xValue}>
@@ -86,12 +94,20 @@ function NavigablePage({ artist, children }) {
         onClick={(event) => navigateRight(event)}
       >
         {currentPage < numPages ? (
-          <Image
-            src="/right-chevron.png"
-            alt="Arrow Right"
-            width="32"
-            height="32"
-          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M13 5l7 7-7 7M5 5l7 7-7 7"
+            />
+          </svg>
         ) : null}
       </button>
     </div>
