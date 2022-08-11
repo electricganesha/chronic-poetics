@@ -7,8 +7,12 @@
     align-items: center;
 
     &__title {
-        margin: 64px;
+        margin: 24px 0;
         width: 100%;
+
+        h1 {
+            margin: 0;
+        }
     }
 
     &__gallery {
@@ -20,6 +24,10 @@
 
         img {
             object-fit: contain !important;
+        }
+
+        p {
+            margin: 0;
         }
     }
 }
