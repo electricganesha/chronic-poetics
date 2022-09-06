@@ -3,34 +3,29 @@ import { useRouter } from "next/router";
 import styles from "./NavigablePage.module.scss";
 import Transition from "../Transition";
 
-const ANIMATION_X_TRANSFORM = 200;
-
 function NavigablePage({ artist, children }) {
   const router = useRouter();
   const numPages = artist.navigation.length;
   const currentPage = artist.navigation.indexOf(router.asPath) + 1;
 
-  const [xValue, setXValue] = useState(ANIMATION_X_TRANSFORM);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
 
   const navigateLeft = (e) => {
+    e.preventDefault();
     if (currentPage <= 1 || currentPage === -1) {
       return;
     }
 
-    e.preventDefault();
-    setXValue(ANIMATION_X_TRANSFORM);
     router.push(artist.navigation[currentPage - 2]);
   };
 
   const navigateRight = (e) => {
+    e.preventDefault();
     if (currentPage >= numPages || currentPage === -1) {
       return;
     }
 
-    e.preventDefault();
-    setXValue(-ANIMATION_X_TRANSFORM);
     router.push(artist.navigation[currentPage]);
   };
 
@@ -56,16 +51,11 @@ function NavigablePage({ artist, children }) {
   }
 
   return (
-    <div
-      className={styles.wrapper}
-      onTouchStart={(touchStartEvent) => handleTouchStart(touchStartEvent)}
-      onTouchMove={(touchMoveEvent) => handleTouchMove(touchMoveEvent)}
-      onTouchEnd={(touchEndEvent) => handleTouchEnd(touchEndEvent)}
-    >
+    <div className={styles.wrapper}>
       <button
         type="button"
         className={styles.wrapper__leftArrow}
-        onClick={(event) => navigateLeft(event)}
+        onClick={navigateLeft}
       >
         {currentPage > 1 ? (
           <svg
@@ -84,13 +74,20 @@ function NavigablePage({ artist, children }) {
           </svg>
         ) : null}
       </button>
-      <Transition xValue={xValue}>
-        <div className={styles.wrapper__content}>{children}</div>
+      <Transition>
+        <div
+          className={styles.wrapper__content}
+          onTouchStart={(touchStartEvent) => handleTouchStart(touchStartEvent)}
+          onTouchMove={(touchMoveEvent) => handleTouchMove(touchMoveEvent)}
+          onTouchEnd={(touchEndEvent) => handleTouchEnd(touchEndEvent)}
+        >
+          {children}
+        </div>
       </Transition>
       <button
         type="button"
         className={styles.wrapper__rightArrow}
-        onClick={(event) => navigateRight(event)}
+        onClick={navigateRight}
       >
         {currentPage < numPages ? (
           <svg

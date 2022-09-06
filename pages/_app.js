@@ -3,6 +3,7 @@ import React from "react";
 import Script from "next/script";
 import { AuthUserProvider } from "../context/AuthUserContext";
 import GoogleAnalyticsTag from "../components/GoogleAnalyticsTag";
+import Transition from "../components/Transition";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -13,7 +14,9 @@ function MyApp({ Component, pageProps }) {
         key="script/shopify-buy-button"
         src="https://sdks.shopifycdn.com/buy-button/1.0.0/buybutton.js"
       />
-      <Component {...pageProps} />
+      <Transition>
+        <Component {...pageProps} />
+      </Transition>
     </AuthUserProvider>
   );
 }

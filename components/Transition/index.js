@@ -2,23 +2,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 import styles from "./Transition.module.scss";
 
-const Transition = ({ children, xValue }) => {
+const Transition = ({ children }) => {
   const { asPath } = useRouter();
 
-  const slideRight = {
-    name: "Slide Right",
+  const fade = {
+    name: "Fade",
     variants: {
       initial: {
         opacity: 0,
-        x: -xValue,
       },
       animate: {
         opacity: 1,
-        x: 0,
       },
       exit: {
         opacity: 0,
-        x: xValue,
       },
     },
     transition: {
@@ -32,11 +29,11 @@ const Transition = ({ children, xValue }) => {
       <AnimatePresence exitBeforeEnter={true}>
         <motion.div
           key={asPath}
-          variants={slideRight.variants}
+          variants={fade.variants}
           initial="initial"
           animate="animate"
           exit="exit"
-          transition={slideRight.transition}
+          transition={fade.transition}
         >
           {children}
         </motion.div>
