@@ -9,7 +9,6 @@ import { useRouter } from "next/router";
 
 export default function ConditionsBySlug({ condition, pieces }) {
   const router = useRouter();
-  console.log("pieces ", pieces);
 
   if (router.isFallback) {
     return <Spinner />;
