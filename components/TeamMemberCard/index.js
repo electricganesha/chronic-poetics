@@ -2,6 +2,10 @@ import React from "react";
 import Image from "next/image";
 import styles from "./TeamMemberCard.module.scss";
 import IndividualSocialLinks from "../IndividualSocialLinks";
+import {
+  convertToCloudinaryBlurURL,
+  cleanUpCloudinaryURL,
+} from "../../utils/cloudinary";
 
 function TeamMemberCard({
   photo,
@@ -14,12 +18,16 @@ function TeamMemberCard({
 }) {
   return (
     <div className={styles.member}>
-      <Image
-        src={photo}
-        alt={`Team photo for ${name}`}
-        width="240"
-        height="240"
-      />
+      {photo ? (
+        <Image
+          src={cleanUpCloudinaryURL(photo)}
+          placeholder="blur"
+          blurDataURL={convertToCloudinaryBlurURL(photo)}
+          alt={`Team photo for ${name}`}
+          width="240"
+          height="240"
+        />
+      ) : null}
       <div className={styles.member__name}>{name}</div>
       <div className={styles.member__role}>{job}</div>
       <div>

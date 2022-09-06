@@ -4,14 +4,12 @@ const getPieces = async (req, res) => {
   try {
     switch (req.method) {
       case "GET": {
-        const query = db
+        const entries = await db
           .collection("pieces")
-          .where("conditions", "array-contains", req.query.id);
-
-        query.get().then((pieces) => {
-          const pieceData = pieces.docs.map((piece) => piece.data());
-          res.status(200).json(pieceData);
-        });
+          .where("conditions", "array-contains", req.query.id)
+          .get();
+        const entriesData = entries.docs.map((pieces) => pieces.data());
+        res.status(200).json(entriesData);
 
         break;
       }
@@ -20,9 +18,8 @@ const getPieces = async (req, res) => {
       }
     }
   } catch (error) {
-    console.log(error);
     res.statusMessage = "Could not retrieve pieces";
-    res.status(503).end();
+    res.status(503).end(error);
   }
 };
 

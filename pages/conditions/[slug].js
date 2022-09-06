@@ -1,26 +1,57 @@
-import Head from "next/head";
+import MetaTags from "../../components/MetaTags";
 import styles from "../../styles/Home.module.scss";
 import ConditionView from "../../components/ConditionView";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import { populatePiecesArrayWithArtistSlug } from "../../utils/populate";
+import Spinner from "../../components/Spinner";
+import { useRouter } from "next/router";
 
-export default function ConditionPage({ condition, pieces }) {
+export default function ConditionsBySlug({ condition, pieces }) {
+  const router = useRouter();
+  console.log("pieces ", pieces);
+
+  if (router.isFallback) {
+    return <Spinner />;
+  }
+
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Chronic Poetics - Condition Page</title>
-      </Head>
+      <MetaTags
+        title={`Chronic Poetics - ${condition[0].name}`}
+        description="Chronic Poetics is an anthology that features artists who experience chronic disability or pain and features essays, prose, illustration and poetry."
+        keywords={`condition, ${condition[0].name}`}
+        url={`${process.env.NEXT_PUBLIC_HOST}${router.asPath}`}
+        image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
+      />
       <Navbar />
-      <ConditionView condition={condition} pieces={pieces} />
+      <ConditionView condition={condition[0]} pieces={pieces} />
       <Footer />
     </div>
   );
 }
 
-ConditionPage.getInitialProps = async (req) => {
+export async function getStaticPaths() {
+  const res = await fetch("https://chronic-poetics.vercel.app/api/conditions");
+  const data = await res.json();
+
+  const paths = data.map((condition) => {
+    return {
+      params: {
+        slug: condition.slug,
+      },
+    };
+  });
+
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+export const getStaticProps = async (req) => {
   const conditionDataRequest = await fetch(
-    `${process.env.NEXT_PUBLIC_HOST}/api/conditions/${req.query.slug}`
+    `https://chronic-poetics.vercel.app/api/conditions/${req.params.slug}`
   ).catch(() => {
     console.error("Error fetching artist from API");
   });
@@ -28,7 +59,7 @@ ConditionPage.getInitialProps = async (req) => {
   const condition = await conditionDataRequest.json();
 
   const piecesDataRequest = await fetch(
-    `${process.env.NEXT_PUBLIC_HOST}/api/pieces/condition/${condition.id}`
+    `https://chronic-poetics.vercel.app/api/pieces/condition/${condition[0].id}`
   ).catch(() => {
     console.error("Error fetching artist from API");
   });
@@ -37,7 +68,7 @@ ConditionPage.getInitialProps = async (req) => {
 
   const mappedArtists = pieces.map(async (piece) => {
     const fetchedArtist = await fetch(
-      `${process.env.NEXT_PUBLIC_HOST}/api/artists/piece/${piece.id}`
+      `https://chronic-poetics.vercel.app/api/artists/piece/${piece.id}`
     ).catch(() => {
       console.error("Error fetching pieces from API");
     });
@@ -49,7 +80,9 @@ ConditionPage.getInitialProps = async (req) => {
 
   const mappedPieces = populatePiecesArrayWithArtistSlug(pieces, artists);
   return {
-    condition,
-    pieces: mappedPieces,
+    props: {
+      condition,
+      pieces: mappedPieces,
+    },
   };
 };

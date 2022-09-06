@@ -4,7 +4,9 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <meta name="description" content="Chronic Poetics description" />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="UTF-8" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

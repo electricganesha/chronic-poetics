@@ -1,16 +1,9 @@
 const path = require("path");
 
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-  async rewrites() {
-    return [
-      {
-        source: "/book",
-        destination: "https://colliding-lines.myshopify.com/api/*",
-      },
-    ];
-  },
   images: {
+    loader: "cloudinary",
+    path: "https://res.cloudinary.com/dhgkpiqzg/image/upload/",
     domains: ["res.cloudinary.com"],
   },
   reactStrictMode: true,
@@ -24,6 +17,23 @@ const nextConfig = {
     });
 
     return config;
+  },
+  exportPathMap: async function () {
+    return {
+      "/": { page: "/" },
+    };
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/admin",
+        destination: "/admin",
+      },
+      {
+        source: "/",
+        destination: "/",
+      },
+    ];
   },
 };
 

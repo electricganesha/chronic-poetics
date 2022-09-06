@@ -1,15 +1,27 @@
-import Head from "next/head";
 import styles from "../styles/Home.module.scss";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import TeamMemberCard from "../components/TeamMemberCard";
+import Spinner from "../components/Spinner";
+import { useRouter } from "next/router";
+import MetaTags from "../components/MetaTags";
 
-export default function About() {
+export default function AboutPage() {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <Spinner />;
+  }
+
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Chronic Poetics - About</title>
-      </Head>
+      <MetaTags
+        title="Chronic Poetics - About / Team"
+        description="Chronic Poetics is an anthology that features artists who experience chronic disability or pain and features essays, prose, illustration and poetry."
+        keywords="about, team"
+        url={`${process.env.NEXT_PUBLIC_HOST}${router.asPath}`}
+        image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
+      />
       <Navbar />
       <main className={styles.main}>
         <h1>About</h1>
@@ -133,3 +145,9 @@ export default function About() {
     </div>
   );
 }
+
+export const getStaticProps = async (req) => {
+  return {
+    props: {},
+  };
+};

@@ -1,14 +1,26 @@
 .footer {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 24px 0;
+    padding: 24px 0 0 0;
     font-size: 12px;
-    gap: 48px;
-
+    gap: 16px;
+    
     &__links {
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
+    }
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        padding: 0;
+        gap: 48px;
+
+        &__links {
+            flex-wrap: nowrap;
+        }
     }
 }

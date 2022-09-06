@@ -5,16 +5,16 @@ const getConditions = async (req, res) => {
     switch (req.method) {
       case "GET": {
         try {
-          let query = db
+          const entries = await db
             .collection("conditions")
-            .where("slug", "==", req.query.slug);
+            .where("slug", "==", req.query.slug)
+            .get();
+          const entriesData = entries.docs.map((conditions) =>
+            conditions.data()
+          );
+          res.status(200).json(entriesData);
 
-          await query.get().then(async (conditions) => {
-            const conditionsData = await conditions.docs.map((condition) =>
-              condition.data()
-            );
-            res.status(200).json(conditionsData[0]);
-          });
+          break;
         } catch (error) {
           res.status(500).end();
         }
@@ -25,9 +25,8 @@ const getConditions = async (req, res) => {
       }
     }
   } catch (error) {
-    console.log(error);
     res.statusMessage = "Could not retrieve condition by slug";
-    res.status(503).end();
+    res.status(503).end(error);
   }
 };
 

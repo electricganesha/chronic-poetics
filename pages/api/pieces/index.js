@@ -4,12 +4,9 @@ const getPieces = async (req, res) => {
   try {
     switch (req.method) {
       case "GET": {
-        let query = db.collection("pieces");
-
-        query.get().then((pieces) => {
-          const piecesData = pieces.docs.map((piece) => piece.data());
-          res.status(200).json(piecesData);
-        });
+        const entries = await db.collection("pieces").get();
+        const entriesData = entries.docs.map((pieces) => pieces.data());
+        res.status(200).json(entriesData);
 
         break;
       }
@@ -18,9 +15,8 @@ const getPieces = async (req, res) => {
       }
     }
   } catch (error) {
-    console.log(error);
     res.statusMessage = "Could not retrieve pieces";
-    res.status(503).end();
+    res.status(503).end(error);
   }
 };
 

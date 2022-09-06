@@ -1,5 +1,9 @@
 import Image from "next/image";
 import styles from "./Footer.module.scss";
+import {
+  convertToCloudinaryBlurURL,
+  cleanUpCloudinaryURL,
+} from "../../utils/cloudinary";
 
 function Footer() {
   return (
@@ -21,10 +25,16 @@ function Footer() {
           {" "}
           Point Positive Publishing
         </a>{" "}
-        - All Rights Reserved &#169;
+        &nbsp;- All Rights Reserved &#169;
       </div>
       <Image
-        src="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1660145425/chronic-poetics/logos/arts-council-logo.png"
+        placeholder="blur"
+        blurDataURL={convertToCloudinaryBlurURL(
+          "https://res.cloudinary.com/dhgkpiqzg/image/upload/v1660145425/chronic-poetics/logos/arts-council-logo.png"
+        )}
+        src={cleanUpCloudinaryURL(
+          "https://res.cloudinary.com/dhgkpiqzg/image/upload/v1660145425/chronic-poetics/logos/arts-council-logo.png"
+        )}
         alt="Arts Council Logo"
         width="260"
         height="70"

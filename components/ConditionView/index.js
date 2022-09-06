@@ -5,6 +5,9 @@ import { removeDuplicates } from "../../utils/array";
 
 function ConditionView({ condition, pieces }) {
   const cleanPieces = removeDuplicates(pieces, "name");
+  console.log("pieces ", pieces);
+  console.log("clean pieces ", cleanPieces);
+  console.log("condition.pieces ", condition.pieces);
 
   return (
     <div className={styles.condition}>

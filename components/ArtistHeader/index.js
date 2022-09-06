@@ -3,6 +3,10 @@ import Image from "next/image";
 import QRCode from "qrcode";
 import Link from "next/link";
 import styles from "./ArtistHeader.module.scss";
+import {
+  convertToCloudinaryBlurURL,
+  cleanUpCloudinaryURL,
+} from "../utils/cloudinary";
 
 function ArtistHeader({ artist, pieces, conditions }) {
   const [qrCodeUrl, setqrCodeUrl] = useState(null);

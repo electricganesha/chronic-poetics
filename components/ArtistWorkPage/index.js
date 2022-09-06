@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import styles from "./ArtistWorkPage.module.scss";
+import {
+  convertToCloudinaryBlurURL,
+  cleanUpCloudinaryURL,
+} from "../../utils/cloudinary";
 
 function ArtistWorkPage({ name, type, work }) {
   const [poems, setPoems] = useState([]);
@@ -37,7 +41,9 @@ function ArtistWorkPage({ name, type, work }) {
             {work.map((piece) => (
               <Image
                 key={piece}
-                src={piece}
+                placeholder="blur"
+                blurDataURL={convertToCloudinaryBlurURL(piece)}
+                src={cleanUpCloudinaryURL(piece)}
                 width={360}
                 height={480}
                 alt={name}

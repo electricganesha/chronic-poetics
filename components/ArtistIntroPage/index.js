@@ -1,6 +1,10 @@
 import Image from "next/image";
 import IndividualSocialLinks from "../IndividualSocialLinks";
 import styles from "./ArtistIntroPage.module.scss";
+import {
+  convertToCloudinaryBlurURL,
+  cleanUpCloudinaryURL,
+} from "../../utils/cloudinary";
 
 function ArtistIntroPage({
   name,
@@ -16,7 +20,9 @@ function ArtistIntroPage({
       {photo ? (
         <Image
           className={styles.artistIntro__photo}
-          src={photo}
+          placeholder="blur"
+          blurDataURL={convertToCloudinaryBlurURL(photo)}
+          src={cleanUpCloudinaryURL(photo)}
           alt={`${name} Profile Picture`}
           width="240"
           height="240"
