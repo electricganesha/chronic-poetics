@@ -19,8 +19,12 @@ export const calculateNavigablePagesForArtist = (artist) => {
 export const mapNavigationForArtist = (artist, pieces, conditions) => {
   const artistNav = [];
 
+  if (pieces.filter((piece) => piece.typeOfWork === "text").length > 0) {
+    artistNav.push(`/artists/${artist.slug}/poetry`);
+  }
+
   if (artist && artist.name && artist.slug) {
-    artistNav.push(`/artists/${artist.slug}`);
+    artistNav.push(`/artists/${artist.slug}/bio`);
   }
 
   if (pieces && pieces.length > 0) {
