@@ -1,6 +1,7 @@
 import ResponsiveMenu from "react-responsive-navbar";
 import Link from "next/link";
 import styles from "./Navbar.module.scss";
+import cc from "classcat";
 
 function Navbar() {
   return (
@@ -28,24 +29,32 @@ function Navbar() {
         smallMenuClassName={styles.menu__small}
         menu={
           <ul className={styles.navbar__list}>
-            <li className={styles.navbar__item}>
-              <Link href="/">Home</Link>
+            <li
+              className={cc([
+                styles.navbar__item,
+                styles["navbar__item--first"],
+              ])}
+            >
+              <Link href="/">Chronic Poetics</Link>
             </li>
-            <li className={styles.navbar__item}>
-              <Link href="/artists">Artists</Link>
-            </li>
-            <li className={styles.navbar__item}>
-              <Link href="/conditions">Conditions</Link>
-            </li>
-            <li className={styles.navbar__item}>
-              <Link href="/book">Book</Link>
-            </li>
-            <li className={styles.navbar__item}>
-              <Link href="/findings">Findings</Link>
-            </li>
-            <li className={styles.navbar__item}>
-              <Link href="/about">About</Link>
-            </li>
+            <div className={styles.navbar__subList}>
+              <li className={styles.navbar__item}>
+                <Link href="/about">About</Link>
+              </li>
+              <li className={styles.navbar__item}>
+                <Link href="/book">Book</Link>
+              </li>
+              <li className={styles.navbar__item}>
+                <Link href="/artists">Artists</Link>
+              </li>
+              <li className={styles.navbar__item}>
+                <Link href="/conditions">Conditions</Link>
+              </li>
+
+              <li className={styles.navbar__item}>
+                <Link href="/findings">Findings</Link>
+              </li>
+            </div>
           </ul>
         }
       />

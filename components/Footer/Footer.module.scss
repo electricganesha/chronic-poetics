@@ -1,11 +1,33 @@
 .footer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    position: fixed;
+    
     align-items: flex-end;
     padding: 24px 0 0 0;
     font-size: 12px;
     gap: 16px;
+    background-color: black;
+    color: white;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+    height: 80px;
+
+    &__wrapper {
+        display: flex;
+        width: 50%;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &__division {
+        padding: 0 12px;
+        margin-left: 0 12px;
+        border-right: none;
+        border-left: 1px solid white;     
+    }
     
     &__links {
         display: flex;

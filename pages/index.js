@@ -23,42 +23,50 @@ export default function HomePage() {
       />
       <Navbar />
       <main className={styles.main}>
-        <h1>Chronic Poetics</h1>
-        <h3
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <div className={styles.logos} style={{}}>
-            <span style={{ marginRight: "12px" }}>A project by</span>{" "}
-            <Image
-              placeholder="blur"
-              blurDataURL={convertToCloudinaryBlurURL(
-                "https://res.cloudinary.com/dhgkpiqzg/image/upload/v1660145425/chronic-poetics/logos/cl-logo.jpg"
-              )}
-              src={cleanUpCloudinaryURL(
-                "https://res.cloudinary.com/dhgkpiqzg/image/upload/v1660145425/chronic-poetics/logos/cl-logo.jpg"
-              )}
-              alt="Colliding Lines Logo"
-              width="120"
-              height="120"
-            />
-            <Image
-              placeholder="blur"
-              blurDataURL={convertToCloudinaryBlurURL(
-                "https://res.cloudinary.com/dhgkpiqzg/image/upload/v1660146347/chronic-poetics/logos/ppp-logo.png"
-              )}
-              src={cleanUpCloudinaryURL(
-                "https://res.cloudinary.com/dhgkpiqzg/image/upload/v1660146347/chronic-poetics/logos/ppp-logo.png"
-              )}
-              alt="Point Positive Logo"
-              width="150"
-              height="150"
-            />
+        <h1 className={styles.title} style={{ textAlign: "right" }}>
+          Chronic
+        </h1>
+        <h1 className={styles.title} style={{ textAlign: "left" }}>
+          Poetics
+          <div className={styles.logos}>
+            <div style={{ display: "flex", paddingLeft: 48, marginTop: 12 }}>
+              <span style={{ paddingLeft: 24 }}>
+                <Image
+                  placeholder="blur"
+                  blurDataURL={convertToCloudinaryBlurURL(
+                    "https://res.cloudinary.com/dhgkpiqzg/image/upload/v1660145425/chronic-poetics/logos/cl-logo.png"
+                  )}
+                  src={cleanUpCloudinaryURL(
+                    "https://res.cloudinary.com/dhgkpiqzg/image/upload/v1660145425/chronic-poetics/logos/cl-logo.png"
+                  )}
+                  alt="Colliding Lines Logo"
+                  width="100"
+                  height="100"
+                />
+              </span>
+              <span
+                style={{
+                  paddingLeft: 24,
+                  paddingTop: 24,
+                  display: "inline-block",
+                }}
+              >
+                <Image
+                  placeholder="blur"
+                  blurDataURL={convertToCloudinaryBlurURL(
+                    "https://res.cloudinary.com/dhgkpiqzg/image/upload/v1660146347/chronic-poetics/logos/ppp-logo.png"
+                  )}
+                  src={cleanUpCloudinaryURL(
+                    "https://res.cloudinary.com/dhgkpiqzg/image/upload/v1660146347/chronic-poetics/logos/ppp-logo.png"
+                  )}
+                  alt="Point Positive Logo"
+                  width="140"
+                  height="140"
+                />
+              </span>
+            </div>
           </div>
-        </h3>
+        </h1>
       </main>
       <Footer />
     </div>

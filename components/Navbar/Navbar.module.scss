@@ -14,53 +14,53 @@
 
 .navbar {
     &__list {
-        width: 100%;
+        width: 50%;
+        margin: auto;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
         list-style-type: none;
         transition: all 300ms;
+        border-bottom: 4px solid black;
+        line-height: 16px;
+        padding-top: 24px !important;
 
         @media (min-width: 768px) {
             flex-direction: row;
             gap: 96px;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
         }
     }
 
+    &__subList {
+        display :flex;
+        justify-content: space-between;
+        width: 60%;
+    }
+
     &__item {
-        font-family: "Overpass", sans-serif;
-        font-weight: 300;
-        font-size: 18px;
         transition: all 300ms;
+
+        &--first {
+            a {
+                font-family: "Overpass", sans-serif;
+                font-weight: 800 !important;
+                font-size: 16px;
+            }
+        }
     }
 
     &__item > a {
+        font-family: "Overpass", sans-serif;
+        font-weight: normal;
+        font-size: 16px;
         position: relative;
         border-bottom: none;
 
         &:hover {
-            border-bottom: none;
+            border-bottom: none !important;
         }
-    }
-
-    &__item > a:before {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 1px;
-        bottom: 0;
-        left: 0;
-        color: lightgrey;
-        background-color: lightgrey;
-        visibility: hidden;
-        transition: all 0.2s ease-in-out;
-    }
-
-    &__item > a:hover:before {
-        visibility: visible;
-        width: 100%;
     }
 }

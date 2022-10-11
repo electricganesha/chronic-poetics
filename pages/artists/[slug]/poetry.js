@@ -34,14 +34,17 @@ export default function ArtistPoetryPage({ artist }) {
       >
         <NavigablePage key={artist.name} artist={artist}>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            {artist.pieces.data.map((piece) => (
-              <ArtistWorkPage
-                key={piece.name}
-                name={piece.name}
-                type={piece.typeOfWork}
-                work={piece.work}
-              />
-            ))}
+            {artist.pieces.data.map((piece) => {
+              if (piece.typeOfWork === "text")
+                return (
+                  <ArtistWorkPage
+                    key={piece.name}
+                    name={piece.name}
+                    type={piece.typeOfWork}
+                    work={piece.work}
+                  />
+                );
+            })}
           </div>
         </NavigablePage>
       </div>

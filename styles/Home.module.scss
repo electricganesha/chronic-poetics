@@ -1,6 +1,4 @@
 .container {
-  padding: 0 2rem;
-
   h1 {
     margin-top: 0;
     font-family: "fig-script", sans-serif;
@@ -39,18 +37,29 @@
 }
 
 .main {
-  min-height: 80vh;
   padding: 0;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 80px;
+  min-height: 80vh;
 
   @media (min-width: 768px) {
     padding: 4rem 0;
     justify-content: center;
   }
+}
+
+.title {
+  padding: 0;
+  margin: 0;
+  width: 50%;
+  font-size: 192px !important;
+  font-weight: 400 !important;
+  display: inline;
+  line-height: 128px;
 }
 
 .artist {
@@ -132,15 +141,6 @@
 }
 
 .logos {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  gap: 36px;
-  
-  @media (min-width: 768px) {
-      min-width: 420px;
-      gap: auto;
-      flex-direction: row;
-  }
+  display: inline;
+  max-height: 140px;
 }
