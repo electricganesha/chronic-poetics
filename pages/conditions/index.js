@@ -2,8 +2,6 @@ import React from "react";
 import MetaTags from "../../components/MetaTags";
 import Link from "next/link";
 import styles from "../../styles/Home.module.scss";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
 import Spinner from "../../components/Spinner";
 import { useRouter } from "next/router";
 
@@ -23,7 +21,6 @@ export default function ConditionsIndex({ conditions }) {
         url={`${process.env.NEXT_PUBLIC_HOST}${router.asPath}`}
         image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
       />
-      <Navbar />
       <main className={styles.main}>
         <h1>Conditions</h1>
         <div className={styles.info}>
@@ -46,7 +43,6 @@ export default function ConditionsIndex({ conditions }) {
           </ul>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

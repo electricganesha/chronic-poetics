@@ -1,7 +1,5 @@
 import MetaTags from "../components/MetaTags";
 import styles from "../styles/Home.module.scss";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import BuyButton from "../components/BuyButton";
 import Spinner from "../components/Spinner";
 import { useRouter } from "next/router";
@@ -22,7 +20,6 @@ export default function BookPage() {
         url={`${process.env.NEXT_PUBLIC_HOST}${router.asPath}`}
         image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
       />
-      <Navbar />
       <main className={styles.main}>
         <h1>Book</h1>
 
@@ -33,7 +30,6 @@ export default function BookPage() {
           <p>TBD</p>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

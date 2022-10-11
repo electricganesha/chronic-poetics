@@ -1,8 +1,6 @@
 import MetaTags from "../../components/MetaTags";
 import styles from "../../styles/Home.module.scss";
 import ConditionView from "../../components/ConditionView";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
 import { populatePiecesArrayWithArtistSlug } from "../../utils/populate";
 import Spinner from "../../components/Spinner";
 import { useRouter } from "next/router";
@@ -23,9 +21,7 @@ export default function ConditionsBySlug({ condition, pieces }) {
         url={`${process.env.NEXT_PUBLIC_HOST}${router.asPath}`}
         image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
       />
-      <Navbar />
       <ConditionView condition={condition[0]} pieces={pieces} />
-      <Footer />
     </div>
   );
 }

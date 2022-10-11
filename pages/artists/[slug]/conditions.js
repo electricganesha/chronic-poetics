@@ -1,8 +1,6 @@
 import MetaTags from "../../../components/MetaTags";
 import styles from "../../../styles/Home.module.scss";
 import ConditionView from "../../../components/ConditionView";
-import Navbar from "../../../components/Navbar";
-import Footer from "../../../components/Footer";
 import NavigablePage from "../../../components/NavigablePage";
 import { populatePiecesArrayWithArtistSlug } from "../../../utils/populate";
 import Spinner from "../../../components/Spinner";
@@ -26,7 +24,6 @@ export default function ArtistConditionsPage({ artist, pieces }) {
         url={`${process.env.NEXT_PUBLIC_HOST}${router.asPath}`}
         image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
       />
-      <Navbar />
       <NavigablePage key={artist.name} artist={artist}>
         <div style={{ display: "flex", flexDirection: "column" }}>
           {artist.conditions.data.map((condition) => (
@@ -38,7 +35,6 @@ export default function ArtistConditionsPage({ artist, pieces }) {
           ))}
         </div>
       </NavigablePage>
-      <Footer />
     </div>
   );
 }

@@ -1,7 +1,5 @@
 import MetaTags from "../../../components/MetaTags";
 import styles from "../../../styles/Home.module.scss";
-import Navbar from "../../../components/Navbar";
-import Footer from "../../../components/Footer";
 import NavigablePage from "../../../components/NavigablePage";
 import ArtistWorkPage from "../../../components/ArtistWorkPage";
 import Spinner from "../../../components/Spinner";
@@ -23,7 +21,6 @@ export default function ArtistPiecesPage({ artist }) {
         url={`${process.env.NEXT_PUBLIC_HOST}${router.asPath}`}
         image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
       />
-      <Navbar />
       <div
         style={{
           display: "flex",
@@ -45,7 +42,6 @@ export default function ArtistPiecesPage({ artist }) {
           </div>
         </NavigablePage>
       </div>
-      <Footer />
     </div>
   );
 }

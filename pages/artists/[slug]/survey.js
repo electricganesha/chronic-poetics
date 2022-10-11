@@ -1,8 +1,6 @@
 import MetaTags from "../../../components/MetaTags";
 import styles from "../../../styles/Home.module.scss";
 import SurveyView from "../../../components/SurveyView";
-import Navbar from "../../../components/Navbar";
-import Footer from "../../../components/Footer";
 import NavigablePage from "../../../components/NavigablePage";
 import Spinner from "../../../components/Spinner";
 import { useRouter } from "next/router";
@@ -23,11 +21,9 @@ export default function ArtistSurveyPage({ artist }) {
         url={`${process.env.NEXT_PUBLIC_HOST}${router.asPath}`}
         image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
       />
-      <Navbar />
       <NavigablePage key={artist.name} artist={artist}>
         <SurveyView artist={artist} />
       </NavigablePage>
-      <Footer />
     </div>
   );
 }

@@ -1,9 +1,7 @@
 import MetaTags from "../../../components/MetaTags";
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "../../../styles/Home.module.scss";
 import ArtistIntroPage from "../../../components/ArtistIntroPage";
-import Navbar from "../../../components/Navbar";
-import Footer from "../../../components/Footer";
 import NavigablePage from "../../../components/NavigablePage";
 import Spinner from "../../../components/Spinner";
 import { useRouter } from "next/router";
@@ -24,7 +22,6 @@ export default function ArtistPage({ artist }) {
         url={`${process.env.NEXT_PUBLIC_HOST}${router.asPath}`}
         image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
       />
-      <Navbar />
       <div className={styles.artist__container}>
         <NavigablePage key={artist.name} artist={artist}>
           <ArtistIntroPage
@@ -36,7 +33,6 @@ export default function ArtistPage({ artist }) {
           />
         </NavigablePage>
       </div>
-      <Footer />
     </div>
   );
 }

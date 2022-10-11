@@ -1,8 +1,6 @@
 import MetaTags from "../components/MetaTags";
 import Image from "next/image";
 import styles from "../styles/Home.module.scss";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { useRouter } from "next/router";
 import {
   convertToCloudinaryBlurURL,
@@ -21,7 +19,6 @@ export default function HomePage() {
         url={`${process.env.NEXT_PUBLIC_HOST}${router.asPath}`}
         image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
       />
-      <Navbar />
       <main className={styles.main}>
         <h1 className={styles.title} style={{ textAlign: "right" }}>
           Chronic
@@ -68,7 +65,6 @@ export default function HomePage() {
           </div>
         </h1>
       </main>
-      <Footer />
     </div>
   );
 }
