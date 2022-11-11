@@ -34,9 +34,9 @@ export default function ArtistsIndex({ artists }) {
                     .filter((artist) => artist.name[0] === letter)
                     .map((artist) => (
                       <li key={artist.slug}>
-                        <Link href={`/artists/${artist.slug}`}>
-                          {artist.name}
-                        </Link>
+                        {artist?.navigation?.length > 0 ? (
+                          <Link href={artist.navigation[0]}>{artist.name}</Link>
+                        ) : null}
                       </li>
                     ))}
                 </p>
