@@ -20,66 +20,57 @@ export default function AboutPage() {
         url={`${process.env.NEXT_PUBLIC_HOST}${router.asPath}`}
         image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
       />
-      <main className={styles.main}>
-        <h1>About</h1>
+      <main className={styles.about}>
+        <h1 className={styles.about__title}>
+          This collection exclusively features artists with an experience of
+          chronic disability and chronic pain
+        </h1>
         <div className={styles.info}>
-          <p>
-            Chronic Poetics is a new anthology published and produced by{" "}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://pointpositive.weebly.com/"
+          <div style={{ display: "flex", gap: 48 }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                textAlign: "left",
+                width: "30%",
+              }}
             >
-              Point Positive Publishing
-            </a>{" "}
-            and{" "}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.collidinglines.com/"
+              <p>
+                Through essays, poetry, images and design, this collection is
+                what we wish people understood about living with a chronic
+                condition.
+              </p>
+              <p>
+                Accompanying the print collection is an online appendix,
+                accessible via QR codes throughout the book.
+              </p>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                textAlign: "left",
+                width: "30%",
+              }}
             >
-              Colliding Lines
-            </a>
-          </p>
-          <p>
-            The collection exclusively features people with an experience of
-            chronic disability and chronic pain. Featuring essays, prose,
-            illustration and poetry, <b>Chronic Poetics</b> is about what we
-            wish people understood about living with a chronic condition.
-          </p>
-          <p>
-            This site accompanies the print collection and features interviews
-            with the published artists, additional pieces not published in the
-            book, and medical information for further reading.
-          </p>
-          <p>
-            Chronic Poetics is supported using public funding by the National
-            Lottery through{" "}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.artscouncil.org.uk/"
-            >
-              Arts Council England
-            </a>
-            .
-          </p>
-          <p>
-            For any questions about the project please contact us at{" "}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="mailto:chronic@collidinglines.com"
-            >
-              chronic@collidinglines.com
-            </a>
-          </p>
-          <h1>Team</h1>
+              <p>
+                The role of art and design is crucial in constructing and
+                communicating healthcare messages around the world, and has the
+                ability to persuade, inform and empower.
+              </p>
+              <p>
+                The message — <br></br>
+                And the stories it tells — &nbsp;&nbsp;&nbsp; is ours.
+              </p>
+            </div>
+          </div>
+          <h1 style={{ marginTop: 48 }}>Our team</h1>
           <div
             style={{
               display: "flex",
               gap: 24,
               rowGap: 48,
+              marginBottom: 48,
               flexWrap: "wrap",
               justifyContent: "center",
               alignItems: "flex-start",

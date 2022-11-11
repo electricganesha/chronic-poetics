@@ -29,7 +29,7 @@ export default function ArtistSurveyPage({ artist }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch("https://chronic-poetics.vercel.app/api/artists");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/artists`);
   const data = await res.json();
 
   const paths = data.map((artist) => {
@@ -48,7 +48,7 @@ export async function getStaticPaths() {
 
 export const getStaticProps = async (req) => {
   const artistDataRequest = await fetch(
-    `https://chronic-poetics.vercel.app/api/artists/${req.params.slug}`
+    `${process.env.NEXT_PUBLIC_HOST}/api/artists/${req.params.slug}`
   ).catch(() => {
     console.error("Error fetching artist from API");
   });

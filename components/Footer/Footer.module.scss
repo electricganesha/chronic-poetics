@@ -1,6 +1,5 @@
 .footer {
     position: fixed;
-    
     align-items: flex-end;
     padding: 24px 0 0 0;
     font-size: 12px;
@@ -11,7 +10,10 @@
     left: 0px;
     right: 0px;
     margin-bottom: 0px;
-    height: 80px;
+    
+    @media (min-width: 960px) {
+        height: 80px;
+    }
 
     &__wrapper {
         display: flex;
@@ -23,10 +25,21 @@
     }
 
     &__division {
-        padding: 0 12px;
-        margin-left: 0 12px;
-        border-right: none;
-        border-left: 1px solid white;     
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-top: 8px;
+
+        @media (min-width: 960px) {
+            display: inline;
+            padding: 0 12px;
+            margin-left: 0 12px;
+            border-right: none;
+            border-left: 1px solid white;     
+            width: auto;
+            text-align: inherit;
+            margin-top: 0;
+        } 
     }
     
     &__links {
@@ -34,6 +47,23 @@
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
+        width: 100vw;
+        padding-bottom: 16px;
+
+        @media (min-width: 960px) {
+            width: auto;
+            padding-bottom: 0;
+        }
+        
+        a {
+            text-decoration: underline;
+
+            &:hover {
+                color: lightgrey;
+                text-decoration: underline;
+                transition: all 0.3s;
+            }
+        }
     }
 
     @media (min-width: 768px) {

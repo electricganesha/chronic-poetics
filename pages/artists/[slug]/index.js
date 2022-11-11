@@ -14,7 +14,7 @@ export default function ArtistPage({ artist }) {
 
 export const getServerSideProps = async (req) => {
   const artistDataRequest = await fetch(
-    `https://chronic-poetics.vercel.app/api/artists/${req.params.slug}`
+    `${process.env.NEXT_PUBLIC_HOST}/api/artists/${req.params.slug}`
   ).catch(() => {
     console.error("Error fetching artist from API");
   });

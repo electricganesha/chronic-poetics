@@ -1,8 +1,10 @@
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 import styles from "./Transition.module.scss";
+import Spinner from "../../components/Spinner";
 
-const Transition = ({ children }) => {
+const Transition = ({ isRouteChanging, children }) => {
   const { asPath } = useRouter();
 
   const fade = {
@@ -35,7 +37,20 @@ const Transition = ({ children }) => {
           exit="exit"
           transition={fade.transition}
         >
-          {children}
+          {isRouteChanging ? (
+            <div
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+              }}
+            >
+              <Spinner />
+            </div>
+          ) : (
+            <React.Fragment>{children}</React.Fragment>
+          )}
         </motion.div>
       </AnimatePresence>
     </div>

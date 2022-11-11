@@ -26,8 +26,8 @@ export default function HomePage() {
         <h1 className={styles.title} style={{ textAlign: "left" }}>
           Poetics
           <div className={styles.logos}>
-            <div style={{ display: "flex", paddingLeft: 48, marginTop: 12 }}>
-              <span style={{ paddingLeft: 24 }}>
+            <div className={styles.logos__container}>
+              <span className={styles["logos__container--left"]}>
                 <Image
                   placeholder="blur"
                   blurDataURL={convertToCloudinaryBlurURL(
@@ -41,13 +41,7 @@ export default function HomePage() {
                   height="100"
                 />
               </span>
-              <span
-                style={{
-                  paddingLeft: 24,
-                  paddingTop: 24,
-                  display: "inline-block",
-                }}
-              >
+              <span className={styles["logos__container--right"]}>
                 <Image
                   placeholder="blur"
                   blurDataURL={convertToCloudinaryBlurURL(

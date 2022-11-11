@@ -4,7 +4,7 @@ import {
   convertToCloudinaryBlurURL,
   cleanUpCloudinaryURL,
 } from "../../utils/cloudinary";
-import cc from "classcat";
+import Link from "next/link";
 
 function Footer() {
   return (
@@ -29,7 +29,16 @@ function Footer() {
             Colliding Lines
           </a>
           &nbsp;
-          <div className={styles.footer__division}>Buy the book</div>
+          <div className={styles.footer__division}>
+            <Link
+              href={`/book`}
+              target="_self"
+              rel="noopener noreferrer"
+              style={{ marginRight: 12 }}
+            >
+              Buy the book
+            </Link>
+          </div>
           <div className={styles.footer__division}>
             All Rights Reserved &#169;
           </div>

@@ -20,8 +20,7 @@ export default function FindingsPage() {
         url={`${process.env.NEXT_PUBLIC_HOST}${router.asPath}`}
         image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
       />
-      <main className={styles.main}>
-        <h1>Findings</h1>
+      <main className={styles.findings}>
         <div className={styles.info}>
           <p>
             As part of Chronic Poetics we asked participating artists to

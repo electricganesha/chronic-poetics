@@ -1,9 +1,10 @@
 import React from "react";
 import MetaTags from "../../components/MetaTags";
 import Link from "next/link";
-import styles from "../../styles/Home.module.scss";
+import styles from "../../styles/Index.module.scss";
 import Spinner from "../../components/Spinner";
 import { useRouter } from "next/router";
+import { getAlphabet } from "../../utils/alphabet";
 
 export default function ConditionsIndex({ conditions }) {
   const router = useRouter();
@@ -11,6 +12,8 @@ export default function ConditionsIndex({ conditions }) {
   if (router.isFallback) {
     return <Spinner />;
   }
+
+  const alphabet = getAlphabet();
 
   return (
     <div className={styles.container}>
@@ -22,23 +25,23 @@ export default function ConditionsIndex({ conditions }) {
         image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
       />
       <main className={styles.main}>
-        <h1>Conditions</h1>
         <div className={styles.info}>
           <ul>
-            {conditions.map((condition) => (
-              <li
-                key={condition.slug}
-                style={{
-                  margin: "auto",
-                  padding: "16px 0",
-                  borderBottom: "1px dotted black",
-                  maxWidth: "360px",
-                }}
-              >
-                <Link href={`/conditions/${condition.slug}`}>
-                  {condition.name}
-                </Link>
-              </li>
+            {alphabet.map((letter) => (
+              <div key={letter} className={styles.index}>
+                <h1>{letter}</h1>
+                <p>
+                  {conditions
+                    .filter((condition) => condition.name[0] === letter)
+                    .map((condition) => (
+                      <li key={condition.slug}>
+                        <Link href={`/conditions/${condition.slug}`}>
+                          {condition.name}
+                        </Link>
+                      </li>
+                    ))}
+                </p>
+              </div>
             ))}
           </ul>
         </div>
@@ -49,7 +52,7 @@ export default function ConditionsIndex({ conditions }) {
 
 export const getStaticProps = async () => {
   const conditionsDataRes = await fetch(
-    "https://chronic-poetics.vercel.app/api/conditions"
+    `${process.env.NEXT_PUBLIC_HOST}/api/conditions`
   ).catch(() => {
     console.error("Error fetching conditions from API");
   });

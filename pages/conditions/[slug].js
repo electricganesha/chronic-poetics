@@ -27,7 +27,7 @@ export default function ConditionsBySlug({ condition, pieces }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch("https://chronic-poetics.vercel.app/api/conditions");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/conditions`);
   const data = await res.json();
 
   const paths = data.map((condition) => {
@@ -46,7 +46,7 @@ export async function getStaticPaths() {
 
 export const getStaticProps = async (req) => {
   const conditionDataRequest = await fetch(
-    `https://chronic-poetics.vercel.app/api/conditions/${req.params.slug}`
+    `${process.env.NEXT_PUBLIC_HOST}/api/conditions/${req.params.slug}`
   ).catch(() => {
     console.error("Error fetching artist from API");
   });
@@ -54,7 +54,7 @@ export const getStaticProps = async (req) => {
   const condition = await conditionDataRequest.json();
 
   const piecesDataRequest = await fetch(
-    `https://chronic-poetics.vercel.app/api/pieces/condition/${condition[0].id}`
+    `${process.env.NEXT_PUBLIC_HOST}/api/pieces/condition/${condition[0].id}`
   ).catch(() => {
     console.error("Error fetching artist from API");
   });
@@ -63,7 +63,7 @@ export const getStaticProps = async (req) => {
 
   const mappedArtists = pieces.map(async (piece) => {
     const fetchedArtist = await fetch(
-      `https://chronic-poetics.vercel.app/api/artists/piece/${piece.id}`
+      `${process.env.NEXT_PUBLIC_HOST}/api/artists/piece/${piece.id}`
     ).catch(() => {
       console.error("Error fetching pieces from API");
     });

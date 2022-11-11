@@ -1,8 +1,9 @@
 import MetaTags from "../../components/MetaTags";
 import Link from "next/link";
-import styles from "../../styles/Home.module.scss";
+import styles from "../../styles/Index.module.scss";
 import Spinner from "../../components/Spinner";
 import { useRouter } from "next/router";
+import { getAlphabet } from "../../utils/alphabet";
 
 export default function ArtistsIndex({ artists }) {
   const router = useRouter();
@@ -10,6 +11,8 @@ export default function ArtistsIndex({ artists }) {
   if (router.isFallback) {
     return <Spinner />;
   }
+
+  const alphabet = getAlphabet();
 
   return (
     <div className={styles.container}>
@@ -21,21 +24,23 @@ export default function ArtistsIndex({ artists }) {
         image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
       />
       <main className={styles.main}>
-        <h1>Artists</h1>
         <div className={styles.info}>
           <ul style={{ padding: 0 }}>
-            {artists.map((artist) => (
-              <li
-                key={artist.slug}
-                style={{
-                  margin: "auto",
-                  padding: "16px 0",
-                  borderBottom: "1px dotted black",
-                  maxWidth: "360px",
-                }}
-              >
-                <Link href={`/artists/${artist.slug}`}>{artist.name}</Link>
-              </li>
+            {alphabet.map((letter) => (
+              <div key={letter} className={styles.index}>
+                <h1>{letter}</h1>
+                <p>
+                  {artists
+                    .filter((artist) => artist.name[0] === letter)
+                    .map((artist) => (
+                      <li key={artist.slug}>
+                        <Link href={`/artists/${artist.slug}`}>
+                          {artist.name}
+                        </Link>
+                      </li>
+                    ))}
+                </p>
+              </div>
             ))}
           </ul>
         </div>
@@ -45,11 +50,11 @@ export default function ArtistsIndex({ artists }) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch(
-    "https://chronic-poetics.vercel.app/api/artists"
-  ).catch((err) => {
-    console.error("Error fetching artists from API ", err);
-  });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/artists`).catch(
+    (err) => {
+      console.error("Error fetching artists from API ", err);
+    }
+  );
 
   const json = await res.json();
 

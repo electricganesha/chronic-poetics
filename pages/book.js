@@ -20,7 +20,7 @@ export default function BookPage() {
         url={`${process.env.NEXT_PUBLIC_HOST}${router.asPath}`}
         image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
       />
-      <main className={styles.main}>
+      <main className={styles.book}>
         <h1>Book</h1>
 
         <div className={styles.info}>
