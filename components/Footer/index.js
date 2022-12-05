@@ -11,13 +11,13 @@ function Footer() {
     <footer className={styles.footer}>
       <div className={styles.footer__wrapper}>
         <div className={styles.footer__links}>
-          <span>A project by</span>
+          <span>A Project by&nbsp;</span>
           <a
             href="https://pointpositive.weebly.com/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            &nbsp;Point Positive Publishing
+            Point Positive Publishing
           </a>
           <span>&nbsp;and&nbsp;</span>
           <a
@@ -43,18 +43,22 @@ function Footer() {
             All Rights Reserved &#169;
           </div>
         </div>
-        <Image
-          placeholder="blur"
-          blurDataURL={convertToCloudinaryBlurURL(
-            "https://res.cloudinary.com/dhgkpiqzg/image/upload/v1665511512/chronic-poetics/logos/arts-council-logo.png"
-          )}
-          src={cleanUpCloudinaryURL(
-            "https://res.cloudinary.com/dhgkpiqzg/image/upload/v1665511512/chronic-poetics/logos/arts-council-logo.png"
-          )}
-          alt="Arts Council Logo"
-          width="260"
-          height="70"
-        />
+        <Link passHref href="https://www.artscouncil.org.uk/">
+          <a target="_blank">
+            <Image
+              placeholder="blur"
+              blurDataURL={convertToCloudinaryBlurURL(
+                "https://res.cloudinary.com/dhgkpiqzg/image/upload/v1665511512/chronic-poetics/logos/arts-council-logo.png"
+              )}
+              src={cleanUpCloudinaryURL(
+                "https://res.cloudinary.com/dhgkpiqzg/image/upload/v1665511512/chronic-poetics/logos/arts-council-logo.png"
+              )}
+              alt="Arts Council Logo"
+              width="156"
+              height="40"
+            />
+          </a>
+        </Link>
       </div>
     </footer>
   );

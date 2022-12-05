@@ -10,7 +10,7 @@ function Navbar() {
 
   const clickedOnItem = (item) => {
     setActiveItem(item);
-    menuCloseButtonRef.current.click();
+    menuCloseButtonRef?.current?.click();
   };
 
   return (
