@@ -39,8 +39,6 @@
         display :flex; 
         flex-direction: column;
         justify-content: space-between;
-        width: 60%;
-
 
         @media (min-width: 768px) {
             flex-direction: row;
@@ -51,30 +49,43 @@
         transition: all 300ms;
         margin: 8px 0;
 
+        &--active > a {
+            font-weight: 800 !important;
+        }
+
         &--first {
             a {
                 font-family: "Overpass", sans-serif;
-                font-weight: 800 !important;
                 font-size: 16px;
                 border-bottom: none !important;
             }
         }
 
         @media (min-width: 768px) {
-            margin: auto;
+            margin: 8px 32px 8px 32px;
+            width: 64px;
+
+            &--first {
+                width: 128px;
+                margin: 8px 0 8px 0;
+            }
+
+            &--last {
+                margin-right: 0;
+            }
         }
     }
 
     &__item > a {
         font-family: "Overpass", sans-serif;
-        font-weight: normal;
+        font-weight: 400;
         font-size: 16px;
         position: relative;
         border-bottom: none !important;
 
         &:hover {
             border-bottom: none !important;
-            color: lightgrey;
+            font-weight: 800;
             transition: all 0.3s;
         }
     }
