@@ -64,11 +64,27 @@
   font-weight: 400 !important;
   display: inline;
   line-height: 128px;
-  text-align: center !important;
+
+  &__top {
+    margin-top: 64px !important;
+
+    @media (min-width: 768px) {
+      text-align: right !important;
+      margin-top: 0;
+    }
+  }
+
+  &__bottom {
+    @media (min-width: 768px) {
+      display: flex;
+      justify-content: space-between;
+      text-align: left;
+    }
+  }
 
   @media (min-width: 768px) {
     width: 960px;
-    font-size: 192px !important;
+    font-size: 172px !important;
   }
 }
 

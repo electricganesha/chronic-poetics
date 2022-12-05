@@ -2,6 +2,7 @@ import MetaTags from "../components/MetaTags";
 import Image from "next/image";
 import styles from "../styles/Home.module.scss";
 import { useRouter } from "next/router";
+import cc from "classcat";
 import {
   convertToCloudinaryBlurURL,
   cleanUpCloudinaryURL,
@@ -20,10 +21,8 @@ export default function HomePage() {
         image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
       />
       <main className={styles.main}>
-        <h1 className={styles.title} style={{ textAlign: "right" }}>
-          Chronic
-        </h1>
-        <h1 className={styles.title} style={{ textAlign: "left" }}>
+        <h1 className={cc([styles.title, styles.title__top])}>Chronic</h1>
+        <h1 className={cc([styles.title, styles.title__bottom])}>
           Poetics
           <div className={styles.logos}>
             <div className={styles.logos__container}>
