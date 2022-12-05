@@ -1,12 +1,20 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import ResponsiveMenu from "react-responsive-navbar";
 import Link from "next/link";
 import styles from "./Navbar.module.scss";
 import cc from "classcat";
+import { useRouter } from "next/router";
 
 function Navbar() {
+  const router = useRouter();
+
   const menuCloseButtonRef = useRef(null);
   const [activeItem, setActiveItem] = useState("home");
+
+  useEffect(() => {
+    const path = router.asPath.replace(/\\|\//g, "") || "home";
+    setActiveItem(path);
+  }, [router]);
 
   const clickedOnItem = (item) => {
     setActiveItem(item);
