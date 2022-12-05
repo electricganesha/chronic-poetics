@@ -26,56 +26,65 @@ export default function AboutPage() {
           chronic disability and chronic pain
         </h1>
         <div className={styles.info}>
-          <div style={{ display: "flex", gap: 48 }}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                textAlign: "left",
-                width: "30%",
-              }}
-            >
+          <div className={styles.info__content}>
+            <div className={styles.info__column}>
               <p>
-                Through essays, poetry, images and design, this collection is
+                Chronic Poetics is a new anthology published and produced by{" "}
+                <a
+                  href="https://pointpositive.weebly.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Point Positive Publishing
+                </a>{" "}
+                and{" "}
+                <a
+                  href="https://www.collidinglines.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Colliding Lines
+                </a>
+                . Through essays, poetry, images and design, this collection is
                 what we wish people understood about living with a chronic
                 condition.
               </p>
               <p>
-                Accompanying the print collection is an online appendix,
-                accessible via QR codes throughout the book.
+                This website accompanies the print collection and features
+                interviews with the published artists, additional pieces not
+                published in the book, and medical information for further
+                reading.
               </p>
             </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                textAlign: "left",
-                width: "30%",
-              }}
-            >
+            <div className={styles.info__column}>
               <p>
-                The role of art and design is crucial in constructing and
-                communicating healthcare messages around the world, and has the
-                ability to persuade, inform and empower.
+                Chronic Poetics is supported using public funding by the
+                National Lottery through{" "}
+                <a
+                  href="https://www.artscouncil.org.uk/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Arts Council England
+                </a>
+                .
               </p>
               <p>
-                The message — <br></br>
-                And the stories it tells — &nbsp;&nbsp;&nbsp; is ours.
+                We are open to submissions for online publication. For more
+                information please see our open call page{" "}
+                <a
+                  href="https://forms.gle/UxLLv6PxEahHiRjZ9"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  here
+                </a>
+                .
               </p>
             </div>
           </div>
-          <h1 style={{ marginTop: 48 }}>Our team</h1>
-          <div
-            style={{
-              display: "flex",
-              gap: 24,
-              rowGap: 48,
-              marginBottom: 48,
-              flexWrap: "wrap",
-              justifyContent: "center",
-              alignItems: "flex-start",
-            }}
-          >
+          <h1 className={styles.team__title}>Our team</h1>
+          <div className={styles.team}>
             <TeamMemberCard
               photo="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1659884930/chronic-poetics/team-photos/angharad.jpg"
               name="Angharad Hengyu Owen"

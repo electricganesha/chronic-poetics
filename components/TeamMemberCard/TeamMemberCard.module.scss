@@ -1,5 +1,13 @@
 .member {
-    max-width: 280px;
+    width: 100%;
+    margin: 24px auto;
+    max-width: 240px;
+
+    @media (min-width: 960px) {
+        margin: 0;
+        width: 240px;
+        max-width: 240px;
+    }
 
     img {
         object-fit: cover;
@@ -18,20 +26,21 @@
     &__name {
         margin: 12px 0;
         font-weight: 800;
+        text-align: left;
     }
 
     &__role {
         font-size: 14px;
-        text-decoration: underline;
         margin: 12px 0;
-        font-weight: 800;
+        font-weight: 400;
+        text-align: left;
     }
 
     &__bio {
-        max-width: 240px;
-        text-align: center;
-        margin: 12px 0;
+        margin: 12px auto;
         font-size: 14px;
         font-weight: 300;
+        text-align: left;
+        max-width: 240px;
     }
 }

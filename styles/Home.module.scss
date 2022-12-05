@@ -105,11 +105,13 @@
   &__title {
     text-align: justify !important;
     font-weight: 300 !important;
+    font-size: 56px !important;
     padding: 0 24px;
+    line-height: 1em;
 
     @media (min-width: 768px) {
       max-width: 960px;
-      font-size: 85px !important;
+      font-size: 72px !important;
       padding: 0;
     }
   }
@@ -227,9 +229,70 @@
   margin-top: 0;
   padding: 0 24px;
 
+  &__content {
+    display: flex;
+    
+    flex-direction: column;
+
+    @media (min-width: 960px) {
+      flex-direction: row;
+      gap: 48px;
+    }
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: 48;
+
+    @media (min-width: 960px) {
+      flex-direction: row;
+    }
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 100%;
+
+    @media (min-width: 960px) {
+      width: 30%;
+    }
+  }
+
   @media (min-width: 960px) {
     width: 960px;
     padding: 0;
+  }
+}
+
+.team {
+  width: 100%;
+  display: flex;
+  gap: 48px;
+  row-gap: 48px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+
+  @media (min-width: 960px) {
+    width: 960px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__title {
+    margin-top: 48 !important;
+    text-align: center !important;
+
+    @media (min-width: 960px) {
+      margin-top: 24 !important;
+      text-align: left !important;
+    }
   }
 }
 

@@ -1,13 +1,13 @@
 .social {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     gap: 32px;
 
     img {
         margin: 4px;
-        width: 32px !important;
-        height: 32px !important;
+        width: 18px !important;
+        height: 18px !important;
     }
 
     @media (min-width: 768px) {
