@@ -4,6 +4,7 @@ import ConditionView from "../../components/ConditionView";
 import { populatePiecesArrayWithArtistSlug } from "../../utils/populate";
 import Spinner from "../../components/Spinner";
 import { useRouter } from "next/router";
+import WebGLExperience from "../../components/WebGLExperience";
 
 export default function ConditionsBySlug({ condition, pieces }) {
   const router = useRouter();
@@ -22,6 +23,7 @@ export default function ConditionsBySlug({ condition, pieces }) {
         image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
       />
       <ConditionView condition={condition[0]} pieces={pieces} />
+      {condition[0].slug === "copd" ? <WebGLExperience /> : null}
     </div>
   );
 }

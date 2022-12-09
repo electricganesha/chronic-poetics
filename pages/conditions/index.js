@@ -26,7 +26,7 @@ export default function ConditionsIndex({ conditions }) {
       />
       <main className={styles.main}>
         <div className={styles.info}>
-          <ul>
+          <ul style={{ padding: 0 }}>
             {alphabet.map((letter) => (
               <div key={letter} className={styles.index}>
                 <h1>{letter}</h1>

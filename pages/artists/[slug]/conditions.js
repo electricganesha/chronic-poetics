@@ -25,7 +25,12 @@ export default function ArtistConditionsPage({ artist, pieces }) {
         image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
       />
       <NavigablePage key={artist.name} artist={artist}>
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
           {artist.conditions.data.map((condition) => (
             <ConditionView
               key={condition.name}

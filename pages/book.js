@@ -21,14 +21,24 @@ export default function BookPage() {
         image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
       />
       <main className={styles.book}>
-        <h1>Book</h1>
-
-        <div className={styles.info}>
+        <div
+          className={styles.info}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            minHeight: "60vh",
+          }}
+        >
           <div>
             <BuyButton />
           </div>
-          <p>TBD</p>
         </div>
+        <p>
+          Chronic Poetics is growing. We are open to submissions from new
+          artists, whose work will be published online.
+        </p>
       </main>
     </div>
   );

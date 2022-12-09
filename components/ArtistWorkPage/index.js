@@ -35,31 +35,31 @@ function ArtistWorkPage({ name, type, work }) {
       <div className={styles.artistWork__title}>
         <h1>{name}</h1>
       </div>
-      <div className={styles.artistWork__gallery}>
-        {type === "graphic" ? (
-          <>
-            {work.map((piece) => (
-              <Image
-                key={piece}
-                placeholder="blur"
-                blurDataURL={convertToCloudinaryBlurURL(piece)}
-                src={cleanUpCloudinaryURL(piece)}
-                width={360}
-                height={480}
-                alt={name}
-                className={styles["artistWork__gallery--image"]}
-              />
-            ))}
-          </>
-        ) : null}
-        {type === "text" ? (
-          <>
-            {poems.map((poem) => (
-              <ReactMarkdown key={poem}>{poem}</ReactMarkdown>
-            ))}
-          </>
-        ) : null}
-      </div>
+
+      {type === "graphic" ? (
+        <div className={styles.artistWork__gallery}>
+          {work.map((piece) => (
+            <Image
+              key={piece}
+              placeholder="blur"
+              blurDataURL={convertToCloudinaryBlurURL(piece)}
+              src={cleanUpCloudinaryURL(piece)}
+              width={360}
+              height={480}
+              alt={name}
+              className={styles["artistWork__gallery--image"]}
+            />
+          ))}
+        </div>
+      ) : null}
+      {type === "text" ? (
+        <div className={styles.artistWork__poetry}>
+          {poems.map((poem) => (
+            <ReactMarkdown key={poem}>{poem}</ReactMarkdown>
+          ))}
+        </div>
+      ) : null}
+
       <div />
     </div>
   );

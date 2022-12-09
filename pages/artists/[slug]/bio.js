@@ -30,6 +30,7 @@ export default function ArtistPage({ artist }) {
             photo={artist.photo}
             website={artist.website}
             instagram={artist.instagram}
+            photoCredit={artist.photoCredit}
           />
         </NavigablePage>
       </div>

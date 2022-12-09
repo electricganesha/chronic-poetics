@@ -30,7 +30,9 @@ export default function ArtistPiecesPage({ artist }) {
         }}
       >
         <NavigablePage key={artist.name} artist={artist}>
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", width: "100%" }}
+          >
             {artist.pieces.data.map((piece) => (
               <ArtistWorkPage
                 key={piece.name}
