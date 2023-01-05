@@ -21,12 +21,19 @@ export default function FindingsPage() {
         image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
       />
       <main className={styles.findings}>
-        <div className={styles.info}>
-          <p>
-            As part of Chronic Poetics we asked participating artists to
-            complete a survey that explored how accessible the arts are for
-            disabled artists and what their experience was of engaging with the
-            arts. Key findings from the study are:
+        <div>
+          <h1 className={styles.findings__title}>
+            The biggest barriers to engaging in the arts was cost, time, and
+            accessibility
+          </h1>
+          <p className={styles.findings__text}>
+            <p>
+              As part of Chronic Poetics we asked participating artists to
+              complete a survey that explored how accessible the arts are for
+              disabled artists and what their experience was of engaging with
+              the arts.
+            </p>
+            <p>Key findings from the study are:</p>
             <ItemsList>
               <ul>
                 <li>
@@ -52,7 +59,7 @@ export default function FindingsPage() {
                 </li>
               </ul>
             </ItemsList>
-            <p style={{ marginTop: 64 }}>
+            <p style={{ marginTop: 12 }}>
               You can read and download the full report as a pdf{" "}
               <a
                 target="_blank"
