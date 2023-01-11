@@ -1,5 +1,5 @@
 import MetaTags from "../components/MetaTags";
-import styles from "../styles/Home.module.scss";
+import styles from "../styles/Findings.module.scss";
 import ItemsList from "../components/ItemsList";
 import Spinner from "../components/Spinner";
 import { useRouter } from "next/router";

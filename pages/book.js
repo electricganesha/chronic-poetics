@@ -1,5 +1,5 @@
 import MetaTags from "../components/MetaTags";
-import styles from "../styles/Home.module.scss";
+import styles from "../styles/Book.module.scss";
 import BuyButton from "../components/BuyButton";
 import Spinner from "../components/Spinner";
 import { useRouter } from "next/router";
@@ -28,7 +28,6 @@ export default function BookPage() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            minHeight: "60vh",
           }}
         >
           <div>

@@ -74,16 +74,14 @@ function NavigablePage({ artist, children }) {
           </svg>
         ) : null}
       </button>
-      <Transition>
-        <div
-          className={styles.wrapper__content}
-          onTouchStart={(touchStartEvent) => handleTouchStart(touchStartEvent)}
-          onTouchMove={(touchMoveEvent) => handleTouchMove(touchMoveEvent)}
-          onTouchEnd={(touchEndEvent) => handleTouchEnd(touchEndEvent)}
-        >
-          {children}
-        </div>
-      </Transition>
+      <div
+        className={styles.wrapper__content}
+        onTouchStart={(touchStartEvent) => handleTouchStart(touchStartEvent)}
+        onTouchMove={(touchMoveEvent) => handleTouchMove(touchMoveEvent)}
+        onTouchEnd={(touchEndEvent) => handleTouchEnd(touchEndEvent)}
+      >
+        {children}
+      </div>
       <button
         type="button"
         className={styles.wrapper__rightArrow}

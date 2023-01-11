@@ -36,6 +36,7 @@ const Transition = ({ isRouteChanging, children }) => {
           animate="animate"
           exit="exit"
           transition={fade.transition}
+          style={{ height: "100%" }}
         >
           {isRouteChanging ? (
             <div
@@ -49,7 +50,7 @@ const Transition = ({ isRouteChanging, children }) => {
               <Spinner />
             </div>
           ) : (
-            <React.Fragment>{children}</React.Fragment>
+            <>{children}</>
           )}
         </motion.div>
       </AnimatePresence>

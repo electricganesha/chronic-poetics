@@ -1,6 +1,6 @@
 import MetaTags from "../../../components/MetaTags";
 import React from "react";
-import styles from "../../../styles/Home.module.scss";
+import styles from "../../../styles/Artist.module.scss";
 import ArtistIntroPage from "../../../components/ArtistIntroPage";
 import NavigablePage from "../../../components/NavigablePage";
 import Spinner from "../../../components/Spinner";

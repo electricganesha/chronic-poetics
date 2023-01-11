@@ -1,4 +1,4 @@
-import styles from "../styles/Home.module.scss";
+import styles from "../styles/About.module.scss";
 import TeamMemberCard from "../components/TeamMemberCard";
 import Spinner from "../components/Spinner";
 import { useRouter } from "next/router";
