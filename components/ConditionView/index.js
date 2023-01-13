@@ -24,25 +24,28 @@ function ConditionView({ condition, pieces }) {
       <div className={styles.condition__info}>
         {condition.symptoms && (
           <div>
-            <p>Symptoms:</p>
-            {condition.symptoms.map((symptom) => (
-              <p key={symptom.name}>
-                <Link href={symptom.link}>{symptom.name}</Link>
-              </p>
-            ))}
+            <h3>Symptoms</h3>
+            <ul>
+              {condition.symptoms.map((symptom) => (
+                <li key={symptom.name}>
+                  <Link href={symptom.link}>{symptom.name}</Link>
+                </li>
+              ))}
+            </ul>
           </div>
         )}
         {condition.pieces && (
           <div className={styles.condition__pieces}>
-            <p>Pieces relating to {condition.name}:</p>
-            {cleanPieces.map((piece) => (
-              <Link
-                key={piece.name}
-                href={`/artists/${piece.artistSlug}/pieces`}
-              >
-                {piece.name}
-              </Link>
-            ))}
+            <h3>Related Artists&apos; works</h3>
+            <ul>
+              {cleanPieces.map((piece) => (
+                <li key={piece.name}>
+                  <Link href={`/artists/${piece.artistSlug}/pieces`}>
+                    {piece.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         )}
       </div>
