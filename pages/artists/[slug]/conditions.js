@@ -1,5 +1,5 @@
 import MetaTags from "../../../components/MetaTags";
-import styles from "../../../styles/Home.module.scss";
+import styles from "../../../styles/Condition.module.scss";
 import ConditionView from "../../../components/ConditionView";
 import NavigablePage from "../../../components/NavigablePage";
 import { populatePiecesArrayWithArtistSlug } from "../../../utils/populate";
@@ -25,12 +25,7 @@ export default function ArtistConditionsPage({ artist, pieces }) {
         image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
       />
       <NavigablePage key={artist.name} artist={artist}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
+        <div className={styles.wrapper}>
           {artist.conditions.data.map((condition) => (
             <ConditionView
               key={condition.name}

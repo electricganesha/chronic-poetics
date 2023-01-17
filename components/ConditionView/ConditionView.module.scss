@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 48px 0;
+  padding: 48px 16px;
   border-bottom: 4px solid black;
 
   &:last-child {
@@ -11,7 +11,7 @@
   }
 
   &:first-child {
-    padding: 0 0 48px 0;
+    padding: 0 24px 48px 24px;
 
     h1 {
       margin-top: 48px;
@@ -37,7 +37,7 @@
   }
 
   &__description {
-    column-count: 2;
+    column-count: 1;
     text-align: justify;
     margin: 0;
 
@@ -73,15 +73,25 @@
 
     ul {
       display: flex;
+      flex-direction: column;
       margin-top: 8px;
+
+      @media (min-width: 768px) {
+        flex-direction: row;
+      }
     }
 
     ul > li {
       font-size: 16px;
 
       &::after {
-        margin: 0 12px;
-        content: "|";
+        margin: 0;
+        content: "";
+
+        @media (min-width: 768px) {
+          margin: 0 12px;
+          content: "|";
+        }
       }
 
       &:last-child {

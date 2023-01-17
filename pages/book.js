@@ -22,7 +22,7 @@ export default function BookPage() {
       />
       <main className={styles.book}>
         <div
-          className={styles.info}
+          className={styles.book__button}
           style={{
             display: "flex",
             flexDirection: "column",
@@ -30,9 +30,7 @@ export default function BookPage() {
             justifyContent: "center",
           }}
         >
-          <div>
-            <BuyButton />
-          </div>
+          <BuyButton />
         </div>
         <p>
           Chronic Poetics is growing. We are open to submissions from new

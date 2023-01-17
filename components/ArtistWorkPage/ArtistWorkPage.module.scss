@@ -5,6 +5,11 @@
     max-width: 960px;
     justify-content: center;
     align-items: flex-start;
+    padding: 24px 48px 164px 48px;
+
+    @media (min-width: 768px) {
+        padding: 0;
+    }
 
     &__title {
         margin: 24px 0;

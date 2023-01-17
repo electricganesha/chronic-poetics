@@ -1,4 +1,10 @@
 .artistIntro {
+    padding: 24px 48px 164px 48px;
+
+    @media (min-width: 768px) {
+        padding: 0;
+    }
+
     &__bio {
         text-align: left;
         margin: 56px 0;

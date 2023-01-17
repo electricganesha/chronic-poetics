@@ -1,0 +1,15 @@
+.container {
+  padding-bottom: 124px;
+
+  @media (min-width: 768px) {
+    padding-bottom: 80px;
+  }
+}
+
+.wrapper {
+    padding: 24px 48px 48px 48px;
+
+    @media (min-width: 768px) {
+        padding: 0;
+    }
+}

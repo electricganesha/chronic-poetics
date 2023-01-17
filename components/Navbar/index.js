@@ -12,7 +12,7 @@ function Navbar() {
   const [activeItem, setActiveItem] = useState("home");
 
   useEffect(() => {
-    const path = router.asPath.replace(/\\|\//g, "") || "home";
+    const path = router.asPath.split("/")[1] || "home";
     setActiveItem(path);
   }, [router]);
 

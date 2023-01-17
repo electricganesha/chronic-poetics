@@ -13,6 +13,13 @@
     padding: 0;
   }
 
+  &__button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__title {
     max-width: 960px;
     text-align: justify !important;
