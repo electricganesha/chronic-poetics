@@ -32,7 +32,7 @@ export default function BookPage() {
         >
           <BuyButton />
         </div>
-        <p>
+        <p className={styles.book__text}>
           Chronic Poetics is growing. We are open to submissions from new
           artists, whose work will be published online.
         </p>

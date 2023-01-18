@@ -42,7 +42,7 @@ function Navbar() {
             </span>
           </button>
         }
-        changeMenuOn="500px"
+        changeMenuOn="768px"
         largeMenuClassName={styles.menu__large}
         smallMenuClassName={styles.menu__small}
         menu={

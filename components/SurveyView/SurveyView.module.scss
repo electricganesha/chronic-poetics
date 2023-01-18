@@ -1,14 +1,18 @@
 .surveyView {
+  padding: 24px 48px 48px 48px;
+
+  @media (min-width: 768px) {
+    max-width: 768px;
+    padding: 0;
+  }
+
+  @media (min-width: 960px) {
     max-width: 960px;
-    padding: 24px 48px 48px 48px;
+  }
 
-    @media (min-width: 768px) {
-        padding: 0;
-    }
-
-    > div {
-        overflow-y: auto !important;
-        height: auto !important;
-        max-height: fit-content !important;
-    }
+  > div {
+    overflow-y: auto !important;
+    height: auto !important;
+    max-height: fit-content !important;
+  }
 }

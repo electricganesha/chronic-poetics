@@ -9,8 +9,13 @@
   margin: 0 48px;
 
   @media (min-width: 768px) {
-    margin: 0;
+    margin: auto;
     padding: 0;
+    max-width: 768px;
+  }
+
+  @media (min-width: 960px) {
+    max-width: 960px;
   }
 
   &__button {
@@ -20,11 +25,8 @@
     align-items: center;
   }
 
-  &__title {
-    max-width: 960px;
-    text-align: justify !important;
-    font-size: 72px !important;
-    font-weight: 300 !important;
+  &__text {
+    text-align: center;
   }
 }
 

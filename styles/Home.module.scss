@@ -25,21 +25,21 @@
   line-height: 128px;
 
   &__top {
-    @media (min-width: 768px) {
+    @media (min-width: 960px) {
       text-align: right !important;
       margin-top: 0;
     }
   }
 
   &__bottom {
-    @media (min-width: 768px) {
+    @media (min-width: 960px) {
       display: flex;
       justify-content: space-between;
       text-align: left;
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 960px) {
     width: 960px;
     font-size: 172px !important;
   }

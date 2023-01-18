@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 48px 24px 128px 24px;
+  padding: 48px 24px 256px 24px;
 
   @media (min-width: 768px) {
     padding: 4rem 0;
@@ -16,6 +16,10 @@
   margin: auto;
 
   @media (min-width: 768px) {
+    width: 768px;
+  }
+
+  @media (min-width: 960px) {
     width: 960px;
   }
 }
