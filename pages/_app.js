@@ -32,7 +32,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <AuthUserProvider>
-      <GoogleAnalyticsTag />
       <Script
         id="script/shopify-buy-button"
         key="script/shopify-buy-button"
@@ -43,6 +42,7 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
       </Transition>
       <Footer />
+      <GoogleAnalyticsTag />
     </AuthUserProvider>
   );
 }
