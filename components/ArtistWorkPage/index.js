@@ -11,7 +11,7 @@ function ArtistWorkPage({ name, type, work }) {
   const [poems, setPoems] = useState([]);
 
   useEffect(() => {
-    if (type === "text") {
+    if (type === "poem" || type === "essay") {
       const fetchPoems = async () => {
         return Promise.all(
           work.map(async (piece) =>
@@ -44,22 +44,28 @@ function ArtistWorkPage({ name, type, work }) {
               placeholder="blur"
               blurDataURL={convertToCloudinaryBlurURL(piece)}
               src={cleanUpCloudinaryURL(piece)}
-              width={360}
-              height={480}
+              width={960}
+              height={640}
               alt={name}
               className={styles["artistWork__gallery--image"]}
             />
           ))}
         </div>
       ) : null}
-      {type === "text" ? (
+      {type === "poem" ? (
         <div className={styles.artistWork__poetry}>
           {poems.map((poem) => (
             <ReactMarkdown key={poem}>{poem}</ReactMarkdown>
           ))}
         </div>
       ) : null}
-
+      {type === "essay" ? (
+        <div className={styles.artistWork__essay}>
+          {poems.map((poem) => (
+            <ReactMarkdown key={poem}>{poem}</ReactMarkdown>
+          ))}
+        </div>
+      ) : null}
       <div />
     </div>
   );

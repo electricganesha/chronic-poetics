@@ -28,6 +28,12 @@ body {
   font-weight: 300;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 85.2vh;
+}
+
 h1 {
   margin-top: 0;
   font-family: "fig-script", sans-serif;

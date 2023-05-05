@@ -31,19 +31,26 @@ function MyApp({ Component, pageProps }) {
   }, [router.events]);
 
   return (
-    <AuthUserProvider>
-      <Script
-        id="script/shopify-buy-button"
-        key="script/shopify-buy-button"
-        src="https://sdks.shopifycdn.com/buy-button/1.0.0/buybutton.js"
-      />
-      <Navbar />
-      <Transition isRouteChanging={isRouteChanging}>
-        <Component {...pageProps} />
-      </Transition>
-      <Footer />
-      <GoogleAnalyticsTag />
-    </AuthUserProvider>
+    <>
+      <AuthUserProvider>
+        <Script
+          id="script/shopify-buy-button"
+          key="script/shopify-buy-button"
+          src="https://sdks.shopifycdn.com/buy-button/1.0.0/buybutton.js"
+        />
+
+        <Transition isRouteChanging={isRouteChanging}>
+          <>
+            <Navbar />
+            <main>
+              <Component {...pageProps} />
+            </main>
+            <Footer />
+          </>
+        </Transition>
+        <GoogleAnalyticsTag />
+      </AuthUserProvider>
+    </>
   );
 }
 

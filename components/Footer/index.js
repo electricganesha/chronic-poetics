@@ -46,6 +46,7 @@ function Footer() {
         <Link passHref href="https://www.artscouncil.org.uk/">
           <a target="_blank">
             <Image
+              style={{ marginTop: 4 }}
               placeholder="blur"
               blurDataURL={convertToCloudinaryBlurURL(
                 "https://res.cloudinary.com/dhgkpiqzg/image/upload/v1665511512/chronic-poetics/logos/arts-council-logo.png"
@@ -55,7 +56,7 @@ function Footer() {
               )}
               alt="Arts Council Logo"
               width="156"
-              height="40"
+              height="42"
             />
           </a>
         </Link>

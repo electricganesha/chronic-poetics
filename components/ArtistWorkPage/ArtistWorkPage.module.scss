@@ -18,7 +18,7 @@
 
         h1 {
             font-size: 64px;
-            text-align: left;
+            text-align: center;
             margin: 0;
         }
     }
@@ -41,6 +41,20 @@
 
     &__poetry {
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 48px;
+        text-align: center;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    &__essay {
+        width: 80%;
+        margin: auto;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
