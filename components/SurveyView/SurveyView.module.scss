@@ -1,13 +1,22 @@
 .surveyView {
   padding: 24px 48px 48px 48px;
 
+h1 {
+        font-size: 64px;
+        margin: 24px 0 -20px 0;
+        padding: 0;
+        text-align: center;
+    }
+
   @media (min-width: 768px) {
-    max-width: 768px;
+    max-width: 80%;
+    margin: auto;
     padding: 0;
   }
 
   @media (min-width: 960px) {
-    max-width: 960px;
+    max-width: 80%;
+    margin: auto;
   }
 
   > div {

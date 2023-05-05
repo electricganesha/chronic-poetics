@@ -24,8 +24,19 @@
         }
     }
 
+    &__bioExtra {
+        margin-top: 12px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
     &__photoCredit {
-        margin: 0 auto 0 auto;
+        &::before {
+            content: '|';
+            padding: 18px;
+        }
+
         padding-top: 0;
         font-size: 12px;
         text-align: right;

@@ -7,6 +7,7 @@ import styles from "./SurveyView.module.scss";
 function SurveyView({ artist }) {
   return (
     <div className={styles.surveyView}>
+      <h1>Accessibility Survey</h1>
       <QuestionsContainer>
         {artist.importance && (
           <QuestionAnswerBlock

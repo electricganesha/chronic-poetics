@@ -1,8 +1,7 @@
 .block {
     padding: 16px;
     margin: 16px;
-    text-align: center;
-    border-bottom: 4px solid black;
+    text-align: left;
 
     &:last-child {
         border-bottom: none;

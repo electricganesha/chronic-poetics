@@ -26,6 +26,7 @@
     padding: 0 24px;
     line-height: 1em;
     word-spacing: 0.55em;
+    margin-top: 48px;
 
     @media (min-width: 768px) {
       max-width: 960px;
@@ -40,7 +41,7 @@
     padding: 0 24px;
 
     @media (min-width: 768px) {
-      column-count: 3;
+      column-count: 2;
       padding: 0;
     }
   }

@@ -29,14 +29,21 @@ function ArtistIntroPage({
           />
         </div>
       ) : null}
-      {photoCredit ? (
-        <p className={styles.artistIntro__photoCredit}>
-          Photo by: {photoCredit}
+      {bio ? (
+        <p className={styles.artistIntro__bio}>
+          {bio}
+          <div className={styles.artistIntro__bioExtra}>
+            <IndividualSocialLinks website={website} instagram={instagram} />
+            {photoCredit ? (
+              <p className={styles.artistIntro__photoCredit}>
+                Photo by: {photoCredit}
+              </p>
+            ) : null}
+          </div>
         </p>
       ) : null}
-      {bio ? <p className={styles.artistIntro__bio}>{bio}</p> : null}
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <IndividualSocialLinks website={website} instagram={instagram} />
+        <></>
       </div>
     </div>
   );
