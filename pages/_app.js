@@ -36,7 +36,8 @@ function MyApp({ Component, pageProps }) {
         <Script
           id="script/shopify-buy-button"
           key="script/shopify-buy-button"
-          src="https://sdks.shopifycdn.com/buy-button/1.0.0/buybutton.js"
+          src="https://sdks.shopifycdn.com/buy-button/2.4.0/buybutton.js"
+          strategy="beforeInteractive"
         />
 
         <Transition isRouteChanging={isRouteChanging}>

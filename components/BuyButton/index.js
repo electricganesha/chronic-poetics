@@ -45,7 +45,10 @@ function BuyButton() {
   return (
     <div className={styles.button}>
       {showSpinner ? <Spinner /> : null}
-      <div id="product-component-book" className={styles.button__shopify} />
+      <div
+        id="product-component-1708024484915"
+        className={styles.button__shopify}
+      />
     </div>
   );
 }
