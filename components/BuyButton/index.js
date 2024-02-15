@@ -27,8 +27,8 @@ function BuyButton() {
         const ui = window.ShopifyBuy.UI.init(client);
 
         ui.createComponent("product", {
-          id: 7205100257476,
-          node: document.getElementById("product-component-book"),
+          id: 8447396610312,
+          node: document.getElementById("product-component-1708024484915"),
           options: {
             product: {
               events: events,
