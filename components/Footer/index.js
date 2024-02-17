@@ -31,7 +31,7 @@ function Footer() {
           &nbsp;
           <div className={styles.footer__division}>
             <Link
-              href={`/book`}
+              href="https://collidinglines.bigcartel.com/product/chronic-poetics"
               target="_self"
               rel="noopener noreferrer"
               style={{ marginRight: 12 }}
