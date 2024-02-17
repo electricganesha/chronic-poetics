@@ -76,7 +76,7 @@ function Navbar() {
                 ])}
                 onClick={() => clickedOnItem("book")}
               >
-                <Link href="/book">Book</Link>
+                <a href="https://collidinglines.bigcartel.com/product/chronic-poetics" target="_blank">Book</a>
               </li>
               <li
                 className={cc([
