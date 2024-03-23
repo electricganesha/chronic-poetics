@@ -36,6 +36,20 @@ function ArtistWorkPage({ name, type, work }) {
         <h1>{name}</h1>
       </div>
 
+      {type === "poem" ? (
+        <div className={styles.artistWork__poetry}>
+          {poems.map((poem) => (
+            <ReactMarkdown key={poem}>{poem}</ReactMarkdown>
+            ))}
+        </div>
+      ) : null}
+      {type === "essay" ? (
+        <div className={styles.artistWork__essay}>
+          {poems.map((poem) => (
+            <ReactMarkdown key={poem}>{poem}</ReactMarkdown>
+            ))}
+        </div>
+      ) : null}
       {type === "graphic" ? (
         <div className={styles.artistWork__gallery}>
           {work.map((piece) => (
@@ -49,20 +63,6 @@ function ArtistWorkPage({ name, type, work }) {
               alt={name}
               className={styles["artistWork__gallery--image"]}
             />
-          ))}
-        </div>
-      ) : null}
-      {type === "poem" ? (
-        <div className={styles.artistWork__poetry}>
-          {poems.map((poem) => (
-            <ReactMarkdown key={poem}>{poem}</ReactMarkdown>
-          ))}
-        </div>
-      ) : null}
-      {type === "essay" ? (
-        <div className={styles.artistWork__essay}>
-          {poems.map((poem) => (
-            <ReactMarkdown key={poem}>{poem}</ReactMarkdown>
           ))}
         </div>
       ) : null}
