@@ -75,13 +75,14 @@
       display: flex;
       flex-direction: column;
       margin-top: 8px;
+      flex-wrap: wrap;
 
       @media (min-width: 768px) {
         flex-direction: row;
       }
     }
 
-    ul > li {
+    ul>li {
       font-size: 16px;
 
       &::after {
@@ -116,5 +117,6 @@
     align-items: flex-start;
     gap: 8px;
     text-align: left;
+
   }
 }

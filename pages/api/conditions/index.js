@@ -8,18 +8,18 @@ const getConditions = async (req, res) => {
           .collection("conditions")
           .orderBy("name", "asc")
           .get();
-        const entriesData = entries.docs.map((conditions) => conditions.data());
-        res.status(200).json(entriesData);
-
+        const data = entries.docs.map((conditions) => conditions.data());
+        res.status(200).json(data);
         break;
       }
       default: {
         res.status(405).end();
+        break;
       }
     }
   } catch (error) {
     res.statusMessage = "Could not retrieve conditions";
-    res.status(503).end(err);
+    res.status(503).end(error);
   }
 };
 

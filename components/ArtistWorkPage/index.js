@@ -40,14 +40,14 @@ function ArtistWorkPage({ name, type, work }) {
         <div className={styles.artistWork__poetry}>
           {poems.map((poem) => (
             <ReactMarkdown key={poem}>{poem}</ReactMarkdown>
-            ))}
+          ))}
         </div>
       ) : null}
       {type === "essay" ? (
         <div className={styles.artistWork__essay}>
           {poems.map((poem) => (
             <ReactMarkdown key={poem}>{poem}</ReactMarkdown>
-            ))}
+          ))}
         </div>
       ) : null}
       {type === "graphic" ? (

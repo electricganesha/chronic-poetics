@@ -5,7 +5,7 @@ export default function Document() {
     <Html>
       <Head>
         <meta name="robots" content="index, follow" />
-        <meta charset="UTF-8" />
+        <meta charSet="UTF-8" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

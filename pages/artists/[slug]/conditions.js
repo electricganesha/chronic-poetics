@@ -86,13 +86,18 @@ export const getStaticProps = async (req) => {
 
   const artists = await artistsDataRequest.json();
 
+  const piecesToReturn =
+    pieces.map(
+      (piece) =>
+        (piece && populatePiecesArrayWithArtistSlug(piece, artists)) ?? null
+    )[0] ?? null;
+
+  if (!piecesToReturn) return { props: { artist } };
+
   return {
     props: {
       artist,
-      pieces:
-        pieces.map((piece) =>
-          populatePiecesArrayWithArtistSlug(piece, artists)
-        )[0] || null,
+      pieces: piecesToReturn.filter((piece) => Boolean(piece)),
     },
   };
 };

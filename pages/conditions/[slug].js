@@ -13,23 +13,30 @@ export default function ConditionsBySlug({ condition, pieces }) {
     return <Spinner />;
   }
 
+  if (!condition || !pieces) return null;
+
   return (
     <div className={styles.container}>
       <MetaTags
-        title={`Chronic Poetics - ${condition[0].name}`}
+        title={`Chronic Poetics - ${condition[0]?.name}`}
         description="Chronic Poetics is an anthology that features artists who experience chronic disability or pain and features essays, prose, illustration and poetry."
-        keywords={`condition, ${condition[0].name}`}
+        keywords={`condition, ${condition[0]?.name}`}
         url={`${process.env.NEXT_PUBLIC_HOST}${router.asPath}`}
         image="https://res.cloudinary.com/dhgkpiqzg/image/upload/v1662465901/chronic-poetics/chronic_poetics_opengraph.png"
       />
       <ConditionView condition={condition[0]} pieces={pieces} />
-      {condition[0].slug === "copd" ? <WebGLExperience /> : null}
+      {condition[0]?.slug === "copd" ? <WebGLExperience /> : null}
     </div>
   );
 }
 
 export async function getStaticPaths() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/conditions`);
+
+  if (!res.ok) {
+    throw new Error(`API request failed with status ${res.status}`);
+  }
+
   const data = await res.json();
 
   const paths = data.map((condition) => {
@@ -47,39 +54,64 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps = async (req) => {
-  const conditionDataRequest = await fetch(
-    `${process.env.NEXT_PUBLIC_HOST}/api/conditions/${req.params.slug}`
-  ).catch(() => {
-    console.error("Error fetching artist from API");
-  });
+  try {
+    const conditionDataRequest = await fetch(
+      `${process.env.NEXT_PUBLIC_HOST}/api/conditions/${req.params.slug}`
+    );
 
-  const condition = await conditionDataRequest.json();
+    if (!conditionDataRequest.ok) {
+      throw new Error(
+        `API request failed with status ${conditionDataRequest.status}`
+      );
+    }
 
-  const piecesDataRequest = await fetch(
-    `${process.env.NEXT_PUBLIC_HOST}/api/pieces/condition/${condition[0].id}`
-  ).catch(() => {
-    console.error("Error fetching artist from API");
-  });
+    const condition = await conditionDataRequest.json();
 
-  const pieces = await piecesDataRequest.json();
+    const piecesDataRequest = await fetch(
+      `${process.env.NEXT_PUBLIC_HOST}/api/pieces/condition/${condition[0].id}`
+    );
 
-  const mappedArtists = pieces.map(async (piece) => {
-    const fetchedArtist = await fetch(
-      `${process.env.NEXT_PUBLIC_HOST}/api/artists/piece/${piece.id}`
-    ).catch(() => {
-      console.error("Error fetching pieces from API");
+    if (!piecesDataRequest.ok) {
+      throw new Error(
+        `API request failed with status ${piecesDataRequest.status}`
+      );
+    }
+
+    const pieces = await piecesDataRequest.json();
+
+    const mappedArtists = pieces.map(async (piece) => {
+      const fetchedArtist = await fetch(
+        `${process.env.NEXT_PUBLIC_HOST}/api/artists/piece/${piece.id}`
+      );
+
+      if (!fetchedArtist.ok) {
+        throw new Error(
+          `API request failed with status ${fetchedArtist.status}`
+        );
+      }
+
+      return fetchedArtist.json();
     });
 
-    return fetchedArtist.json();
-  });
+    const artists = await Promise.all(mappedArtists);
 
-  const artists = await Promise.all(mappedArtists);
+    const mappedPieces = populatePiecesArrayWithArtistSlug(pieces, artists);
 
-  const mappedPieces = populatePiecesArrayWithArtistSlug(pieces, artists);
-  return {
-    props: {
-      condition,
-      pieces: mappedPieces,
-    },
-  };
+    if (!mappedPieces) return null;
+
+    return {
+      props: {
+        condition,
+        pieces: mappedPieces.filter((piece) => Boolean(piece)),
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching data from API", error);
+    return {
+      props: {
+        condition: null,
+        pieces: null,
+      },
+    };
+  }
 };
